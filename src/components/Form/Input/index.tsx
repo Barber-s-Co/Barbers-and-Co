@@ -1,21 +1,15 @@
+import { ForwardedRef, forwardRef, InputHTMLAttributes } from "react";
 import { StyleInput } from "./styles";
 
-interface IInput {
-    id: string;
-    type: string;
-    placeholder: string;
-    label: string;
-    err: string;
-    register: object;
-  }
+interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+}
 
-
-export const Input = ({ id, type, placeholder, label, err, register }: IInput) => (
+export const Input = forwardRef(
+  ({ label, ...rest }: IInput, ref: ForwardedRef<HTMLInputElement>) => (
     <div>
-      
-        <StyleInput type={type} id={id} placeholder={placeholder} {...register} />
-        <label htmlFor={id}>{label}</label>
-      
-      
+      {label ? <label>{label}</label> : null}
+      <StyleInput ref={ref} {...rest} />
     </div>
-  );
+  )
+);
