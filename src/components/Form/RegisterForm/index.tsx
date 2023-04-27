@@ -28,7 +28,7 @@ export const RegisterForm = () => {
       <Input
         type="password"
         id="password"
-        placeholder="Digite sea senha"
+        placeholder="Digite sua senha"
         {...register("password")}
       />
       <Input

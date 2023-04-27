@@ -7,5 +7,7 @@ interface IUserProviders {
 }
 
 export const UserProvider = ({ children }: IUserProviders) => {
+  const UserRegister = () => {};
+
   return <UserContext.Provider value={""}>{children}</UserContext.Provider>;
 };
