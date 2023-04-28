@@ -19,8 +19,5 @@ export const GlobalStyles = createGlobalStyle`
     display: unset;
     position: unset;
   }
-  body{
-    background-color: #8A8A8A;
-    height: 100vh;
-  }
+ 
 `;
