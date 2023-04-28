@@ -76,9 +76,12 @@ export const UserProvider = ({ children }: IUserProviders) => {
     }
   };
 
+  const UserRegister = () => {};
+  
   return (
     <UserContext.Provider value={{ userLogin, user }}>
       {children}
     </UserContext.Provider>
   );
+  
 };
