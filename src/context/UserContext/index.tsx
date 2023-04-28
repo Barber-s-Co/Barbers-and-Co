@@ -55,7 +55,7 @@ export const UserProvider = ({ children }: IUserProviders) => {
           },
         });
         setUser(data);
-        navigate("/shop");
+        navigate("/userPage");
       } catch (error) {
         toast.error("Sessão expirada! Refaça o Login.");
         localStorage.removeItem("@TOKEN");
@@ -79,7 +79,7 @@ export const UserProvider = ({ children }: IUserProviders) => {
       localStorage.setItem("@TOKEN", data.accessToken);
       localStorage.setItem("@USERID", String(data.user.id));
       setUser(data.user);
-      navigate("/shop");
+      navigate("/userPage");
     } catch (error) {
       toast.error("Usuário não cadastrado");
     } finally {
