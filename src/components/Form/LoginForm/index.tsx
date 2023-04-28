@@ -6,7 +6,7 @@ import { loginFormSchema } from "./loginFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ToastContainer } from "react-toastify";
 
-export interface ILoginFormData {
+export interface TLoginFormValues {
   email: string;
   password: string;
 }
@@ -19,9 +19,9 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginFormData>({ resolver: zodResolver(loginFormSchema) });
+  } = useForm<TLoginFormValues>({ resolver: zodResolver(loginFormSchema) });
 
-  const submit: SubmitHandler<ILoginFormData> = (formData) => {
+  const submit: SubmitHandler<TLoginFormValues> = (formData) => {
     userLogin(formData, setLoading);
   };
 
