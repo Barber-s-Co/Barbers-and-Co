@@ -1,33 +1,45 @@
-import { Input } from "../Form/Input";
-import { Select } from "../Form/Select";
 import { StyledContainer, StyledFormContainer } from "./style";
+import { ServicesContext } from "../../context/ServicesContext";
+import { useContext } from "react";
+
+export interface IServices {
+  name: string;
+  id: number;
+  price: number;
+  userId: number;
+}
 
 export const Schedule = () => {
+  const { services, available } = useContext(ServicesContext);
+
   return (
     <StyledContainer>
       <div className="schedule">
         <h2>Seus agendamentos</h2>
-        <ul>
-          <li>
-            <div>
-              <p>barba e cabelo</p>
-              <span> R$40,00</span>
-            </div>
-
-            <p>28/08/23</p>
-          </li>
-        </ul>
+        <ul></ul>
       </div>
 
       <StyledFormContainer>
         <form>
           <label>
             Tipo de serviço
-            <Select value="serviço" />
+            <select>
+              {services
+                ? services.map((service) => {
+                    return <option value={service.name}>{service.name}</option>;
+                  })
+                : null}
+            </select>
           </label>
           <label>
             Horário
-            <Select value="horário" />
+            <select>
+            {available
+                ? available.map(({hour}) => {
+                    return <option value={hour}>{hour}</option>;
+                  })
+                : null}
+            </select>
           </label>
           <div className="total">
             <small>Total</small>

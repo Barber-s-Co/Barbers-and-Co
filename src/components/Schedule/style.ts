@@ -4,7 +4,7 @@ export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color:#282828;
+  background-color: #282828;
 
   padding: 25px 15px;
   gap: 25px;
@@ -61,8 +61,7 @@ export const StyledContainer = styled.div`
   }
 
   @media (min-width: 769px) {
-   
-   flex-direction: row;
+    flex-direction: row;
     padding: 30px 150px;
 
     justify-content: space-between;
@@ -114,6 +113,23 @@ export const StyledFormContainer = styled.div`
 
       background-color: transparent;
       color: white;
+    }
+
+    select {
+      width: 100%;
+      height: 30px;
+
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+
+      border: 1px solid white;
+      border-radius: 5px;
+
+      padding: 0 5px;
+
+      option {
+        color: white;
+      }
     }
   }
 
