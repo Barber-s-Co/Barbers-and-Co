@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../../context/UserContext";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../Input";
+import { loginFormSchema } from "./loginFormSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ToastContainer } from "react-toastify";
 
 export interface ILoginFormData {
   email: string;
@@ -16,7 +19,7 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginFormData>();
+  } = useForm<ILoginFormData>({ resolver: zodResolver(loginFormSchema) });
 
   const submit: SubmitHandler<ILoginFormData> = (formData) => {
     userLogin(formData, setLoading);
@@ -24,6 +27,7 @@ export const LoginForm = () => {
 
   return (
     <>
+      <ToastContainer />
       <form onSubmit={handleSubmit(submit)}>
         <Input
           disabled={loading}
@@ -32,6 +36,7 @@ export const LoginForm = () => {
           label="Email"
           placeholder="Email"
           {...register("email")}
+          error={errors.email}
         />
         <Input
           disabled={loading}
@@ -40,6 +45,7 @@ export const LoginForm = () => {
           label="Senha"
           placeholder="Senha"
           {...register("password")}
+          error={errors.password}
         />
         <button disabled={loading}>{loading ? "Entrando..." : "Entrar"}</button>
       </form>
