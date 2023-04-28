@@ -3,6 +3,7 @@ import { ILoginFormData } from "../../components/Form/LoginForm";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { TRegisterFormValues } from "../../components/Zod";
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -11,6 +12,7 @@ interface IUserContext {
     formData: ILoginFormData,
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
   ) => Promise<void>;
+  userRegister: (formData: TRegisterFormValues) => Promise<void>;
   user: IUser | null;
 }
 
@@ -20,13 +22,18 @@ interface IUser {
   id: number;
 }
 
+interface IUserProviders {
+  children: React.ReactNode;
+}
+
 interface IUserLoginResponse {
   accessToken: string;
   user: IUser;
 }
 
-interface IUserProviders {
-  children: React.ReactNode;
+interface IUserRegisterResponse {
+  accessToken: string;
+  user: IUser;
 }
 
 export const UserProvider = ({ children }: IUserProviders) => {
@@ -76,12 +83,21 @@ export const UserProvider = ({ children }: IUserProviders) => {
     }
   };
 
-  const UserRegister = () => {};
-  
+  const userRegister = async (formData: TRegisterFormValues) => {
+    try {
+      await api.post<IUserRegisterResponse>("/users", formData);
+      toast.success("Cadastro realizado com sucesso!");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    } catch (error) {
+      toast.error("Ops! Algo deu errado");
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ userLogin, user }}>
+    <UserContext.Provider value={{ userLogin, user, userRegister }}>
       {children}
     </UserContext.Provider>
   );
-  
 };
