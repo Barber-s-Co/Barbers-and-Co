@@ -1,6 +1,7 @@
 import { StyledContainer, StyledFormContainer } from "./style";
 import { ServicesContext } from "../../context/ServicesContext";
 import { useContext } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 export interface IServices {
   name: string;
@@ -9,8 +10,24 @@ export interface IServices {
   userId: number;
 }
 
+export interface ISchedulingFormData {
+  name: string;
+  hour: string;
+  userId: number;
+  id: number;
+}
+
 export const Schedule = () => {
-  const { services, available } = useContext(ServicesContext);
+  const { services, available, postSchedule } = useContext(ServicesContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({});
+
+  const submit: SubmitHandler<ISchedulingFormData> = (formData) => {
+    postSchedule(formData);
+  };
 
   return (
     <StyledContainer>
@@ -20,23 +37,27 @@ export const Schedule = () => {
       </div>
 
       <StyledFormContainer>
-        <form>
+        <form onSubmit={handleSubmit(submit as SubmitHandler<FieldValues>)}>
           <label>
             Tipo de serviço
-            <select>
+            <select {...register("name")}>
               {services
                 ? services.map((service) => {
-                    return <option value={service.name}>{service.name}</option>;
+                    return (
+                      <option key={service.id} value={service.name}>
+                        {service.name}
+                      </option>
+                    );
                   })
                 : null}
             </select>
           </label>
           <label>
             Horário
-            <select>
-            {available
-                ? available.map(({hour}) => {
-                    return <option value={hour}>{hour}</option>;
+            <select {...register("hour", { required: true })}>
+              {available
+                ? available.map(({ hour }) => {
+                    return <option>{hour}</option>;
                   })
                 : null}
             </select>

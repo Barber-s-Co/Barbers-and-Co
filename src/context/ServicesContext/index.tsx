@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { ISchedulingFormData } from "../../components/Schedule";
 
 export const ServicesContext = createContext({} as IServiesContext);
 
@@ -9,7 +10,9 @@ interface IServicesProviders {
 
 interface IServiesContext {
   services: IServices[];
-  available:IServices[];
+  available: IServices[];
+  postSchedule: (formData: ISchedulingFormData) => Promise<void>;
+  
 }
 
 interface IServices {
@@ -23,7 +26,7 @@ interface IServices {
 export const ServicesProvider = ({ children }: IServicesProviders) => {
   const [services, setServices] = useState<IServices[]>([]);
   const [available, setAvailable] = useState<IServices[]>([]);
-console.log(services)
+
   const getServices = async () => {
     try {
       const response = await api.get("/services");
@@ -42,11 +45,29 @@ console.log(services)
     }
   };
 
+  const postSchedule = async (formData: ISchedulingFormData) => {
+    console.log(formData);
+    const token = localStorage.getItem("@TOKEN");
+    const stringID = localStorage.getItem("@USERID")
+    // const id = parseInt(stringID)
+    // console.log(id)
+    try {
+      const response = await api.post("/scheduling", [{ ...formData, userId: 2 }], {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     getServices();
     getSchedule();
+   
   }, []);
 
-  return <ServicesContext.Provider value={{ services, available }}>{children}</ServicesContext.Provider>;
+  return <ServicesContext.Provider value={{ services, available, postSchedule }}>{children}</ServicesContext.Provider>;
 };
