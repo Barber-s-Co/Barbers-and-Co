@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     border: none;
     list-style: none;
     text-decoration: none;
+    font-family: "Inter", sans-serif;
   }
 
   button{
@@ -17,5 +18,9 @@ export const GlobalStyles = createGlobalStyle`
   dialog{
     display: unset;
     position: unset;
+  }
+  body{
+    background-color: #8A8A8A;
+    height: 100vh;
   }
 `;
