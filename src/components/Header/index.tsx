@@ -12,7 +12,7 @@ export const Header = ({ rote, linkName, src }: IHeaderProps) => {
   return (
     <StyledHeader>
       <div>
-        <img src={logo} alt="" />
+        <img src="" alt="" />
       </div>
 
       <div>
