@@ -95,6 +95,7 @@ export const UserProvider = ({ children }: IUserProviders) => {
     }
   };
 
+
   return (
     <UserContext.Provider value={{ userLogin, user, userRegister }}>
       {children}

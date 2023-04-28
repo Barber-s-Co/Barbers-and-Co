@@ -1,3 +1,4 @@
+import { Select } from "./components/Form/Select";
 import { Header } from "./components/Header";
 import { Router } from "./routes";
 import { GlobalStyles } from "./styles/global";
@@ -7,7 +8,7 @@ function App() {
     <>
       <GlobalStyles />
       <Router/>
-      <Header rote='' linkName={'test'} src=""/>
+     
     </>
   );
 }
