@@ -1,15 +1,15 @@
 import { createContext, useEffect, useState } from "react";
-import { ILoginFormData } from "../../components/Form/LoginForm";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TRegisterFormValues } from "../../components/Zod";
+import { TLoginFormValues } from "../../components/Form/LoginForm/loginFormSchema";
 
 export const UserContext = createContext({} as IUserContext);
 
 interface IUserContext {
   userLogin: (
-    formData: ILoginFormData,
+    formData: TLoginFormValues,
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
   ) => Promise<void>;
   userRegister: (formData: TRegisterFormValues) => Promise<void>;
@@ -66,7 +66,7 @@ export const UserProvider = ({ children }: IUserProviders) => {
   const navigate = useNavigate();
 
   const userLogin = async (
-    formData: ILoginFormData,
+    formData: TLoginFormValues,
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
   ) => {
     try {
