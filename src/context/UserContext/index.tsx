@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { TRegisterFormValues } from "../../components/Zod";
 import { TLoginFormValues } from "../../components/Form/LoginForm/loginFormSchema";
 
@@ -12,7 +13,10 @@ interface IUserContext {
     formData: TLoginFormValues,
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
   ) => Promise<void>;
-  userRegister: (formData: TRegisterFormValues) => Promise<void>;
+  userRegister: (
+    formData: TRegisterFormValues,
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  ) => Promise<void>;
   user: IUser | null;
 }
 
@@ -83,8 +87,12 @@ export const UserProvider = ({ children }: IUserProviders) => {
     }
   };
 
-  const userRegister = async (formData: TRegisterFormValues) => {
+  const userRegister = async (
+    formData: TRegisterFormValues,
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
     try {
+      setLoading(true);
       await api.post<IUserRegisterResponse>("/users", formData);
       toast.success("Cadastro realizado com sucesso!");
       setTimeout(() => {
@@ -92,6 +100,8 @@ export const UserProvider = ({ children }: IUserProviders) => {
       }, 2000);
     } catch (error) {
       toast.error("Ops! Algo deu errado");
+    } finally {
+      setLoading(false);
     }
   };
 

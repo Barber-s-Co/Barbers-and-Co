@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useContext, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { TRegisterFormValues, ZodRegister } from "../../Zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../Input";
+import { UserContext } from "../../../context/UserContext";
 
 export const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
+  const { userRegister } = useContext(UserContext);
 
   const {
     register,
@@ -15,17 +17,19 @@ export const RegisterForm = () => {
     resolver: zodResolver(ZodRegister),
   });
 
-  const submit = () => {};
+  const submit: SubmitHandler<TRegisterFormValues> = (formData) => {
+    userRegister(formData, setLoading);
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit(submit)}>
       <Input
         disabled={loading}
         type="text"
         id="name"
-        label="Email"
-        placeholder="Email"
-        {...register("email")}
+        label="Nome"
+        placeholder="Digite seu nome"
+        {...register("name")}
         error={errors.name}
       />
       <Input
@@ -52,7 +56,9 @@ export const RegisterForm = () => {
         {...register("confirm")}
         error={errors.confirm}
       />
-      <button type="submit">Cadastrar</button>
+      <button disabled={loading}>
+        {loading ? "Cadastrando..." : "Cadastrar"}
+      </button>
     </form>
   );
 };
