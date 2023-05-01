@@ -27,9 +27,9 @@ export const RegisterForm = () => {
         disabled={loading}
         type="text"
         id="name"
-        label="Email"
-        placeholder="Email"
-        {...register("email")}
+        label="Nome"
+        placeholder="Digite seu nome"
+        {...register("name")}
         error={errors.name}
       />
       <Input
