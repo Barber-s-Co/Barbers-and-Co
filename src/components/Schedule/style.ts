@@ -30,6 +30,11 @@ export const StyledContainer = styled.div`
       gap: 20px;
 
       padding: 10px 0;
+
+      max-height: 200px;
+
+      overflow-y:scroll;
+
       li {
         display: flex;
         justify-content: space-around;

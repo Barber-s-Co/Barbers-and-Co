@@ -11,21 +11,26 @@ interface IServicesProviders {
 interface IServiesContext {
   services: IServices[];
   available: IServices[];
+  appointments:IServices[];
   postSchedule: (formData: ISchedulingFormData) => Promise<void>;
-  
 }
 
 interface IServices {
+  map(arg0: (item: { hour: any; }) => void): any;
+  segunda: any;
   name: string;
   id: number;
   price: number;
   userId: number;
   hour: string;
+  date:string;
 }
 
 export const ServicesProvider = ({ children }: IServicesProviders) => {
   const [services, setServices] = useState<IServices[]>([]);
   const [available, setAvailable] = useState<IServices[]>([]);
+  const [appointments, setAppointments] = useState([]);
+  console.log(available)
 
   const getServices = async () => {
     try {
@@ -48,16 +53,25 @@ export const ServicesProvider = ({ children }: IServicesProviders) => {
   const postSchedule = async (formData: ISchedulingFormData) => {
     console.log(formData);
     const token = localStorage.getItem("@TOKEN");
-    const stringID = localStorage.getItem("@USERID")
-    // const id = parseInt(stringID)
-    // console.log(id)
+
     try {
-      const response = await api.post("/scheduling", [{ ...formData, userId: 2 }], {
+      const response = await api.post("/scheduling", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          
         },
       });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const myAppointments = async () => {
+    try {
+      const response = await api.get("/scheduling");
+      const id = localStorage.getItem("@USERID") || "null";
+      const userID = parseInt(id);
+
+      setAppointments(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -66,8 +80,8 @@ export const ServicesProvider = ({ children }: IServicesProviders) => {
   useEffect(() => {
     getServices();
     getSchedule();
-   
+    myAppointments();
   }, []);
 
-  return <ServicesContext.Provider value={{ services, available, postSchedule }}>{children}</ServicesContext.Provider>;
+  return <ServicesContext.Provider value={{ services, available, postSchedule, appointments }}>{children}</ServicesContext.Provider>;
 };
