@@ -1,6 +1,7 @@
 import { Header } from "../../components/Header"
 import { Schedule } from "../../components/Schedule"
 
+
 export const UserPage = () =>{
     return(
         <>

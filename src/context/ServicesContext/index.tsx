@@ -11,26 +11,25 @@ interface IServicesProviders {
 interface IServiesContext {
   services: IServices[];
   available: IServices[];
-  appointments:IServices[];
+  appointments: IServices[];
   postSchedule: (formData: ISchedulingFormData) => Promise<void>;
 }
 
 interface IServices {
-  map(arg0: (item: { hour: any; }) => void): any;
-  segunda: any;
+  weekDay: string;
   name: string;
   id: number;
   price: number;
   userId: number;
-  hour: string;
-  date:string;
+  hour: Array<string>;
+  date: string;
+  time: string;
 }
 
 export const ServicesProvider = ({ children }: IServicesProviders) => {
   const [services, setServices] = useState<IServices[]>([]);
   const [available, setAvailable] = useState<IServices[]>([]);
   const [appointments, setAppointments] = useState([]);
-  console.log(available)
 
   const getServices = async () => {
     try {

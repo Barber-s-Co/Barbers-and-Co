@@ -1,7 +1,8 @@
 import { StyledContainer, StyledFormContainer } from "./style";
 import { ServicesContext } from "../../context/ServicesContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { getAvailableHours } from "./filterSchedule";
 
 export interface IServices {
   name: string;
@@ -19,7 +20,11 @@ export interface ISchedulingFormData {
 
 export const Schedule = () => {
   const { services, available, postSchedule, appointments } = useContext(ServicesContext);
-console.log(appointments)
+  const [selectedDay, setSelectedDay] = useState("");
+  const [isDaySelected, setIsDaySelected] = useState(false);
+  const id = localStorage.getItem("@USERID") || "null";
+  const userID = parseInt(id);
+
   const {
     register,
     handleSubmit,
@@ -44,15 +49,17 @@ console.log(appointments)
         <ul>
           {appointments
             ? appointments.map((appointment) => {
-                return (
-                  <li key={appointment.id}>
-                    <div>
-                      <p>{appointment.name}</p>
-                      <span>{appointment.hour}</span>
-                    </div>
-                    <p>{}</p>
-                  </li>
-                );
+                if (appointment.userId == userID) {
+                  return (
+                    <li key={appointment.id}>
+                      <div>
+                        <p>{appointment.name}</p>
+                        <span>{`${appointment.date} ás ${appointment.hour}`}</span>
+                      </div>
+                      
+                    </li>
+                  );
+                }
               })
             : null}
         </ul>
@@ -75,23 +82,35 @@ console.log(appointments)
             </select>
           </label>
           <label>
-            <select {...register("date", { required: true })}>
-            {available
-                ? available.map((item) => {
-                  console.log(item)
-                    return <option></option>;
+            <select
+              {...register("date", { required: true })}
+              onChange={(e) => {
+                setSelectedDay(e.target.value);
+                setIsDaySelected(e.target.value !== "Selecionar dia");
+              }}
+            >
+              <option>Selecionar dia</option>
+              {available
+                ? available.map((date) => {
+                    return (
+                      <option key={date.weekDay} value={date.weekDay}>
+                        {date.weekDay}
+                      </option>
+                    );
                   })
                 : null}
             </select>
           </label>
           <label>
             Horário
-            <select {...register("hour", { required: true })}>
-              {available
-                ? available.map(({ hour }) => {
-                    return <option key={hour}>{hour}</option>;
-                  })
-                : null}
+            <select disabled={!isDaySelected} {...register("hour", { required: true })}>
+              {getAvailableHours(selectedDay).map((hour) => {
+                return (
+                  <option key={hour} value={hour}>
+                    {hour}
+                  </option>
+                );
+              })}
             </select>
           </label>
           <div className="total">
@@ -99,7 +118,7 @@ console.log(appointments)
             <small>10,00</small>
           </div>
 
-          <button>Agendar</button>
+          <button disabled={!isDaySelected}>Agendar</button>
         </form>
       </StyledFormContainer>
     </StyledContainer>
