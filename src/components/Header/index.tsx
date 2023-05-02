@@ -8,6 +8,7 @@ interface IHeaderProps {
 }
 
 export const Header = ({ rote, linkName, src }: IHeaderProps) => {
+  const token = localStorage.getItem("@TOKEN");
   const navigate = useNavigate();
   const logout = () => {
     localStorage.clear();
@@ -20,9 +21,7 @@ export const Header = ({ rote, linkName, src }: IHeaderProps) => {
         <img className="logoImg" src={src} alt="logo" />
       </div>
 
-      <div>
-        <button onClick={() => logout()}>{linkName}</button>
-      </div>
+      <div>{token ? <button onClick={() => logout()}>{linkName}</button> : <Link to={rote}>{linkName}</Link>}</div>
     </StyledHeader>
   );
 };
