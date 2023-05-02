@@ -1,23 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StyledHeader } from "./style";
-import logo from "../../assets/react.svg"
 
 interface IHeaderProps {
   rote: string;
   linkName: string;
   src: string;
+  alt: string;
+  className: string;
 }
 
-export const Header = ({ rote, linkName, src }: IHeaderProps) => {
+
+export const Header = ({
+  rote,
+  linkName,
+  src,
+  alt,
+  className,
+}: IHeaderProps) => {
+
+  const token = localStorage.getItem("@TOKEN");
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.clear();
+    navigate(`${rote}`);
+  };
+
   return (
     <StyledHeader>
       <div>
-        <img src="" alt="" />
+
+        <img src={src} alt={alt} className={className} />
       </div>
 
       <div>
-        <Link to={rote}>{linkName}</Link>
+        {token ? (
+          <button onClick={() => logout()}>{linkName}</button>
+        ) : (
+          <Link to={rote}>{linkName}</Link>
+        )}
       </div>
+
     </StyledHeader>
   );
 };

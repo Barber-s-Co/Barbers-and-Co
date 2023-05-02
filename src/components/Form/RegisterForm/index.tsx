@@ -23,6 +23,7 @@ export const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit(submit)}>
+      <h1>Cadastro</h1>
       <Input
         disabled={loading}
         type="text"
@@ -36,6 +37,7 @@ export const RegisterForm = () => {
         disabled={loading}
         type="email"
         id="email"
+        label="Email"
         placeholder="Digite seu email"
         {...register("email")}
         error={errors.email}
@@ -44,6 +46,7 @@ export const RegisterForm = () => {
         disabled={loading}
         type="password"
         id="password"
+        label="Senha"
         placeholder="Digite sua senha"
         {...register("password")}
         error={errors.password}
@@ -52,6 +55,7 @@ export const RegisterForm = () => {
         disabled={loading}
         type="password"
         id="confirmPassword"
+        label="Confirmar senha"
         placeholder="Confirme sua senha"
         {...register("confirm")}
         error={errors.confirm}

@@ -16,6 +16,7 @@ interface IServiesContext {
 }
 
 interface IServices {
+  filter(arg0: (t: any) => boolean): IServices;
   weekDay: string;
   name: string;
   id: number;
