@@ -5,24 +5,23 @@ export const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 55px;
+  padding: 0 20px;
 
   height: 70px;
   width: 100%;
-
   background-color: rgba(0, 0, 0, 0.9);
-  position: fixed;
 
-  .logoLoginRegister {
-    width: 80px;
-    height: 80px;
-    /* margin-left: 10px; */
+  .logoImg {
+    width: 65px;
+    height: 65px;
+    margin-left: 10px;
   }
 
   .logoWriting {
     width: 200px;
     height: 65px;
   }
+
 
   a {
     color: white;
@@ -35,7 +34,20 @@ export const StyledHeader = styled.header`
     border-bottom: 3px solid #f9cc00;
   }
 
+
+  button {
+    color: white;
+    border-bottom: 3px solid #f9cc00;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    background-color: transparent;
+  }
+
   @media (min-width: 769px) {
+    padding: 0 100px;
+    
     height: 80px;
 
     display: flex;

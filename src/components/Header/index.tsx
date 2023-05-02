@@ -9,6 +9,7 @@ interface IHeaderProps {
   className: string;
 }
 
+
 export const Header = ({
   rote,
   linkName,
@@ -16,6 +17,7 @@ export const Header = ({
   alt,
   className,
 }: IHeaderProps) => {
+
   const token = localStorage.getItem("@TOKEN");
   const navigate = useNavigate();
   const logout = () => {
@@ -26,6 +28,7 @@ export const Header = ({
   return (
     <StyledHeader>
       <div>
+
         <img src={src} alt={alt} className={className} />
       </div>
 
@@ -36,6 +39,7 @@ export const Header = ({
           <Link to={rote}>{linkName}</Link>
         )}
       </div>
+
     </StyledHeader>
   );
 };
