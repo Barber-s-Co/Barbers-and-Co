@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StyledHeader } from "./style";
 
 interface IHeaderProps {
@@ -16,6 +16,13 @@ export const Header = ({
   alt,
   className,
 }: IHeaderProps) => {
+  const token = localStorage.getItem("@TOKEN");
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.clear();
+    navigate(`${rote}`);
+  };
+
   return (
     <StyledHeader>
       <div>
@@ -23,7 +30,11 @@ export const Header = ({
       </div>
 
       <div>
-        <Link to={rote}>{linkName}</Link>
+        {token ? (
+          <button onClick={() => logout()}>{linkName}</button>
+        ) : (
+          <Link to={rote}>{linkName}</Link>
+        )}
       </div>
     </StyledHeader>
   );
