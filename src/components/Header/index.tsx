@@ -5,9 +5,19 @@ interface IHeaderProps {
   rote: string;
   linkName: string;
   src: string;
+  alt: string;
+  className: string;
 }
 
-export const Header = ({ rote, linkName, src }: IHeaderProps) => {
+
+export const Header = ({
+  rote,
+  linkName,
+  src,
+  alt,
+  className,
+}: IHeaderProps) => {
+
   const token = localStorage.getItem("@TOKEN");
   const navigate = useNavigate();
   const logout = () => {
@@ -18,10 +28,18 @@ export const Header = ({ rote, linkName, src }: IHeaderProps) => {
   return (
     <StyledHeader>
       <div>
-        <img className="logoImg" src={src} alt="logo" />
+
+        <img src={src} alt={alt} className={className} />
       </div>
 
-      <div>{token ? <button onClick={() => logout()}>{linkName}</button> : <Link to={rote}>{linkName}</Link>}</div>
+      <div>
+        {token ? (
+          <button onClick={() => logout()}>{linkName}</button>
+        ) : (
+          <Link to={rote}>{linkName}</Link>
+        )}
+      </div>
+
     </StyledHeader>
   );
 };

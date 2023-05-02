@@ -8,7 +8,7 @@ export const StyledHeader = styled.header`
   padding: 0 20px;
 
   height: 70px;
-
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.9);
 
   .logoImg {
@@ -22,6 +22,19 @@ export const StyledHeader = styled.header`
     height: 65px;
   }
 
+
+  a {
+    color: white;
+
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  a:hover {
+    border-bottom: 3px solid #f9cc00;
+  }
+
+
   button {
     color: white;
     border-bottom: 3px solid #f9cc00;
@@ -34,6 +47,7 @@ export const StyledHeader = styled.header`
 
   @media (min-width: 769px) {
     padding: 0 100px;
+    
     height: 80px;
 
     display: flex;
