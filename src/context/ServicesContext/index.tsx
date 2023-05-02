@@ -16,6 +16,7 @@ interface IServiesContext {
 }
 
 interface IServices {
+  filter(arg0: (t: any) => boolean): IServices;
   weekDay: string;
   name: string;
   id: number;
@@ -80,7 +81,7 @@ export const ServicesProvider = ({ children }: IServicesProviders) => {
     getServices();
     getSchedule();
     myAppointments();
-  }, []);
+  }, [appointments]);
 
   return <ServicesContext.Provider value={{ services, available, postSchedule, appointments }}>{children}</ServicesContext.Provider>;
 };

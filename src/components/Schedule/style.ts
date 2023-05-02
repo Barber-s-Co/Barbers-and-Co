@@ -31,7 +31,7 @@ export const StyledContainer = styled.div`
 
       padding: 10px 0;
 
-      max-height: 200px;
+      max-height: 400px;
 
       overflow-y:scroll;
 
@@ -133,7 +133,9 @@ export const StyledFormContainer = styled.div`
       padding: 0 5px;
 
       option {
-        color: white;
+       border-bottom: 1px solid green;
+        
+        max-height: 10px;
       }
     }
   }

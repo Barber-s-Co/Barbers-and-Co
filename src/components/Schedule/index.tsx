@@ -2,7 +2,7 @@ import { StyledContainer, StyledFormContainer } from "./style";
 import { ServicesContext } from "../../context/ServicesContext";
 import { useContext, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { getAvailableHours } from "./filterSchedule";
+import { getAvailableHours } from "./fragmentSchedule";
 
 export interface IServices {
   name: string;
@@ -16,6 +16,7 @@ export interface ISchedulingFormData {
   hour: string;
   userId: number;
   id: number;
+  date: string;
 }
 
 export const Schedule = () => {
@@ -35,11 +36,16 @@ export const Schedule = () => {
     const id = localStorage.getItem("@USERID") || "null";
     const userID = parseInt(id);
 
-    const data = {
-      ...formData,
-      userId: userID,
-    };
-    postSchedule(data);
+    appointments.find((appointment) => {
+      if (appointment.date === formData.date) {
+        console.log("oi");
+      }
+      const data = {
+        ...formData,
+        userId: userID,
+      };
+      postSchedule(data);
+    });
   };
 
   return (
@@ -56,7 +62,6 @@ export const Schedule = () => {
                         <p>{appointment.name}</p>
                         <span>{`${appointment.date} ás ${appointment.hour}`}</span>
                       </div>
-                      
                     </li>
                   );
                 }
@@ -74,7 +79,7 @@ export const Schedule = () => {
                 ? services.map((service) => {
                     return (
                       <option key={service.id} value={service.name}>
-                        {service.name}
+                        {`${service.name} R$${service.price}`}
                       </option>
                     );
                   })
