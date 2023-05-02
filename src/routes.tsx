@@ -4,24 +4,32 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { ProtectRoutes } from "./components/ProtectRoutes";
 import { ServicesProvider } from "./context/ServicesContext";
 import { UserPage } from "./pages/UserPage";
-import { Homepage } from "./pages/HomePage";
+import { AdmPage } from "./pages/AdmPage";
+import { AdmProvider } from "./context/AdmContext";
 
 export const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/homePage" element={<Homepage />} />
-      <Route path="/userPage" element={<ProtectRoutes />}>
-        <Route
-          index
-          element={
-            <ServicesProvider>
-              <UserPage />
-            </ServicesProvider>
-          }
-        />
-      </Route>
-    </Routes>
+    <Route path="/" element={<LoginPage />} />
+    <Route path="/register" element={<RegisterPage />} />
+    <Route path="/admPage" element={<ProtectRoutes />}>
+      <Route index element={<AdmProvider>
+        <AdmPage/>
+      </AdmProvider>}/>
+    
+      
+    </Route>
+    <Route path="/userPage" element={<ProtectRoutes />}>
+      <Route
+        index
+        element={
+          <ServicesProvider>
+            <UserPage/>
+          </ServicesProvider>
+        }
+      />
+    </Route>
+    
+  </Routes>
   );
 };
