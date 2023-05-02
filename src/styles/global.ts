@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     list-style: none;
     text-decoration: none;
     font-family: "Inter", sans-serif;
+    line-height: 1.5;
   }
 
   button{

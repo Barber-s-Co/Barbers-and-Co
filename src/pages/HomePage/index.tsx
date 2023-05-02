@@ -1,1 +1,3 @@
-export const Homepage = () => {};
+export const Homepage = () => {
+  return <h1>Home page</h1>;
+};
