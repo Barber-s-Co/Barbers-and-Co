@@ -5,6 +5,7 @@ import { Input } from "../Input";
 import { loginFormSchema } from "./loginFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ToastContainer } from "react-toastify";
+import { StyledLoginForm } from "./style";
 
 export interface TLoginFormValues {
   email: string;
@@ -28,7 +29,7 @@ export const LoginForm = () => {
   return (
     <>
       <ToastContainer />
-      <form onSubmit={handleSubmit(submit)}>
+      <StyledLoginForm onSubmit={handleSubmit(submit)}>
         <Input
           disabled={loading}
           type="email"
@@ -48,7 +49,7 @@ export const LoginForm = () => {
           error={errors.password}
         />
         <button disabled={loading}>{loading ? "Entrando..." : "Entrar"}</button>
-      </form>
+      </StyledLoginForm>
     </>
   );
 };

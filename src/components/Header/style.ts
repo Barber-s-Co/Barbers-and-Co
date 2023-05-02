@@ -1,44 +1,47 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
- display: flex;
-align-items: center;
-justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-padding: 0 55px;
+  padding: 0 55px;
 
-height: 70px;
+  height: 70px;
+  width: 100%;
 
-background-color: rgba(0,0,0,0.9);
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
 
-.logoImg{
-    width: 65px;
+  .logoLoginRegister {
+    width: 80px;
+    height: 80px;
+    /* margin-left: 10px; */
+  }
+
+  .logoWriting {
+    width: 200px;
     height: 65px;
-    margin-left: 10px;
-}
+  }
 
-.logoWriting{
-width: 200px;
-height: 65px;
-}
-
-a{
+  a {
     color: white;
-    border-bottom: 3px solid #F9CC00 ;
 
     font-size: 18px;
     font-weight: 600;
-}
+    cursor: pointer;
+  }
+  a:hover {
+    border-bottom: 3px solid #f9cc00;
+  }
 
-@media(min-width: 769px){
+  @media (min-width: 769px) {
     height: 80px;
 
     display: flex;
 
-    .logoImg{
-        margin-left: 15px;
+    .logoImg {
+      margin-left: 15px;
     }
-}
-    
-
-`
+  }
+`;
