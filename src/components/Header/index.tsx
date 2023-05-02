@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { StyledHeader } from "./style";
-import logo from "../../assets/react.svg";
 
 interface IHeaderProps {
   rote: string;
