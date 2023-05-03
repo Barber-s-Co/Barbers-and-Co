@@ -5,7 +5,7 @@ import logo from "../../assets/logo.svg"
 export const UserPage = () =>{
     return(
         <>
-        <Header src={logo} rote="/" linkName="sair"/>
+        <Header src={logo} alt="logo" rote="/" linkName="sair" className="logoImg"/>
 
         <div>
             <div>

@@ -9,14 +9,8 @@ import { TLoginFormValues } from "../../components/Form/LoginForm/loginFormSchem
 export const UserContext = createContext({} as IUserContext);
 
 interface IUserContext {
-  userLogin: (
-    formData: TLoginFormValues,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
-  ) => Promise<void>;
-  userRegister: (
-    formData: TRegisterFormValues,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
-  ) => Promise<void>;
+  userLogin: (formData: TLoginFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
+  userRegister: (formData: TRegisterFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
   user: IUser | null;
 }
 
@@ -24,6 +18,7 @@ interface IUser {
   email: string;
   name: string;
   id: number;
+  admin: boolean;
 }
 
 interface IUserProviders {
@@ -55,7 +50,11 @@ export const UserProvider = ({ children }: IUserProviders) => {
           },
         });
         setUser(data);
-        navigate("/userPage");
+        if (data.admin === true) {
+          navigate("/admPage");
+        } else {
+          navigate("/userPage");
+        }
       } catch (error) {
         toast.error("Sessão expirada! Refaça o Login.");
         localStorage.removeItem("@TOKEN");
@@ -69,17 +68,19 @@ export const UserProvider = ({ children }: IUserProviders) => {
 
   const navigate = useNavigate();
 
-  const userLogin = async (
-    formData: TLoginFormValues,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
-  ) => {
+  const userLogin = async (formData: TLoginFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
     try {
       setLoading(true);
       const { data } = await api.post<IUserLoginResponse>("/login", formData);
+      console.log(data);
       localStorage.setItem("@TOKEN", data.accessToken);
       localStorage.setItem("@USERID", String(data.user.id));
       setUser(data.user);
-      navigate("/userPage");
+      if (data.user.admin === true) {
+        navigate("/admPage");
+      } else {
+        navigate("/userPage");
+      }
     } catch (error) {
       toast.error("Usuário não cadastrado");
     } finally {
@@ -87,10 +88,7 @@ export const UserProvider = ({ children }: IUserProviders) => {
     }
   };
 
-  const userRegister = async (
-    formData: TRegisterFormValues,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
-  ) => {
+  const userRegister = async (formData: TRegisterFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
     try {
       setLoading(true);
       await api.post<IUserRegisterResponse>("/users", formData);
@@ -105,10 +103,5 @@ export const UserProvider = ({ children }: IUserProviders) => {
     }
   };
 
-
-  return (
-    <UserContext.Provider value={{ userLogin, user, userRegister }}>
-      {children}
-    </UserContext.Provider>
-  );
+  return <UserContext.Provider value={{ userLogin, user, userRegister }}>{children}</UserContext.Provider>;
 };

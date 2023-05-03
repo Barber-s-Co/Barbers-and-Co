@@ -81,7 +81,7 @@ export const ServicesProvider = ({ children }: IServicesProviders) => {
     getServices();
     getSchedule();
     myAppointments();
-  }, [appointments]);
+  }, []);
 
   return <ServicesContext.Provider value={{ services, available, postSchedule, appointments }}>{children}</ServicesContext.Provider>;
 };

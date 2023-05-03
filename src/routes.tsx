@@ -10,26 +10,30 @@ import { AdmProvider } from "./context/AdmContext";
 export const Router = () => {
   return (
     <Routes>
-    <Route path="/" element={<LoginPage />} />
-    <Route path="/register" element={<RegisterPage />} />
-    <Route path="/admPage" element={<ProtectRoutes />}>
-      <Route index element={<AdmProvider>
-        <AdmPage/>
-      </AdmProvider>}/>
-    
-      
-    </Route>
-    <Route path="/userPage" element={<ProtectRoutes />}>
-      <Route
-        index
-        element={
-          <ServicesProvider>
-            <UserPage/>
-          </ServicesProvider>
-        }
-      />
-    </Route>
-    
-  </Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/admPage" element={<ProtectRoutes />}>
+        <Route
+          index
+          element={
+            <ServicesProvider>
+              <AdmProvider>
+                <AdmPage />
+              </AdmProvider>
+            </ServicesProvider>
+          }
+        />
+      </Route>
+      <Route path="/userPage" element={<ProtectRoutes />}>
+        <Route
+          index
+          element={
+            <ServicesProvider>
+              <UserPage />
+            </ServicesProvider>
+          }
+        />
+      </Route>
+    </Routes>
   );
 };
