@@ -4,7 +4,7 @@ export const StyleMain = styled.main``;
 
 export const StyleHeader = styled.header`
   display: flex;
-  width: 100%;
+  width: 100vw;
   height: 4.75rem;
   background-color: black;
   justify-content: space-between;
@@ -120,6 +120,7 @@ export const ServicesContainer = styled.div`
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
+    padding: 0 18.75rem;
   }
 
   img {
@@ -129,6 +130,26 @@ export const ServicesContainer = styled.div`
   p {
     color: #ffffff;
     font-size: 1.25rem;
+  }
+
+  @media (max-width: 400px) {
+    img {
+      height: 5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    ul {
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 617px) {
+    ul {
+      padding: 0;
+    }
   }
 `;
 
@@ -174,6 +195,10 @@ export const StyleFeedback = styled.div`
   padding-top: 1.875rem;
   font-size: 1.25rem;
 
+  @media (max-width: 745px) {
+    display: none;
+  }
+
   .feedbacks {
     display: flex;
     flex-direction: row;
@@ -190,6 +215,14 @@ export const StyleFeedback = styled.div`
       height: 12.5rem;
       border: 0.313rem solid #f9cc00;
       border-radius: 0.5rem;
+    }
+
+    @media (max-width: 815px) {
+      display: flex;
+      flex-direction: row;
+      gap: 6.25rem;
+      padding-top: 3.75rem;
+      gap: 2%;
     }
   }
 `;
