@@ -10,8 +10,8 @@ export const RegisterPage = () => {
       <StyledHeader>
         <img src={logo} alt="logo" />
         <div className="header_register">
-          <Link to="/homePage">Home</Link>
-          <Link to="/">Login</Link>
+          <Link to="/">Home</Link>
+          <Link to="/login">Login</Link>
         </div>
       </StyledHeader>
 
