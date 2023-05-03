@@ -72,7 +72,7 @@ export const UserProvider = ({ children }: IUserProviders) => {
     try {
       setLoading(true);
       const { data } = await api.post<IUserLoginResponse>("/login", formData);
-      console.log(data);
+      
       localStorage.setItem("@TOKEN", data.accessToken);
       localStorage.setItem("@USERID", String(data.user.id));
       setUser(data.user);

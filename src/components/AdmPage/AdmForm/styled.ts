@@ -38,11 +38,13 @@ export const StyledServicesContainer = styled.div`
       background-color: #404040;
 
       width: 80%;
-      height: 150px;
+      max-height: 200px;
 
       border-radius: 5px;
 
       padding: 10px 10px;
+
+      overflow-y: auto;
     }
 
     
