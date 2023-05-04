@@ -11,8 +11,9 @@ export const StyleLoginPage = styled.main`
       rgba(0, 0, 0, 0.6)
     ),
     url(src/assets/jovem-na-barbearia-aparando-cabelo.svg);
-  background-position: -250px center;
   background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 
   .login__form {
     display: flex;
