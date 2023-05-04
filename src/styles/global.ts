@@ -20,5 +20,12 @@ export const GlobalStyles = createGlobalStyle`
     display: unset;
     position: unset;
   }
+
+  body{
+    height: 100vh;
+  }
  
+ #root{
+  height: 100%;
+ }
 `;
