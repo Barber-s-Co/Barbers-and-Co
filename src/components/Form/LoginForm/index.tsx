@@ -6,6 +6,7 @@ import { loginFormSchema } from "./loginFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ToastContainer } from "react-toastify";
 import { StyledLoginForm } from "./style";
+import { Link } from "react-router-dom";
 
 export interface TLoginFormValues {
   email: string;
@@ -30,6 +31,7 @@ export const LoginForm = () => {
     <>
       <ToastContainer />
       <StyledLoginForm onSubmit={handleSubmit(submit)}>
+        <h2>Login</h2>
         <Input
           disabled={loading}
           type="email"
@@ -49,6 +51,13 @@ export const LoginForm = () => {
           error={errors.password}
         />
         <button disabled={loading}>{loading ? "Entrando..." : "Entrar"}</button>
+
+        <p className="register__paragraph">
+          Crie sua conta e aproveite o melhor serviço da cidade!
+        </p>
+        <Link to="/register" className="register__btn">
+          Cadastrar
+        </Link>
       </StyledLoginForm>
     </>
   );
