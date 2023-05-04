@@ -58,7 +58,7 @@ export const AdmProvider = ({ children }: IAdmProviders) => {
   const deleteServices = async () => {
     const token = localStorage.getItem("@TOKEN");
     try {
-      const response = await api.delete(`/services${idService}`, {
+      const response = await api.delete(`/services/${idService}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
