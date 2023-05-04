@@ -3,27 +3,35 @@ import styled from "styled-components";
 export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
-  background-color: #282828;
+  max-width: 100%;
+  width: 100%;
 
-  padding: 25px 15px;
-  gap: 25px;
+  height: 100%;
+
+  padding: 15px 0;
+  gap: 15px;
 
   .schedule {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     background-color: rgba(0, 0, 0, 0.6);
-    height: 250px;
-    border: 1px solid yellow;
 
-    border-radius: 10px;
+    border: 1px solid #f9cc00;
+    border-radius: 5px;
 
-    text-align: center;
+    height: 350px;
+    width: 100%;
 
-    padding: 15px 5px;
+    padding: 10px 5px;
 
-    color: white;
+    h3 {
+      font-size: 22px;
 
-    h2{
-      font-size: 20px;
+      color: #ffffff;
     }
 
     ul {
@@ -31,127 +39,120 @@ export const StyledContainer = styled.div`
       flex-direction: column;
       align-items: center;
 
-      gap: 20px;
+      width: 90%;
+      height: 100%;
+      max-height: 100%;
 
-      padding: 10px 0;
+      overflow-y: auto;
 
-      max-height: 400px;
-
-      overflow-y:scroll;
+      padding: 8px 0;
 
       li {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
 
-        width: 70%;
-        border: 1px solid;
-        border-radius: 25px;
+        border: 1px solid #ffffff;
+        border-radius: 8px;
 
-        padding: 5px 5px;
+        width: 90%;
 
-        p {
-          font-size: 12px;
-        }
+        padding: 5px 10px;
 
-        div {
-          display: flex;
-          flex-direction: column;
+        color: #ffffff;
 
-          p {
-            font-size: 12px;
-          }
-          span {
-            font-size: 12px;
-          }
+        img {
+          width: 24px;
+          height: 24px;
+          cursor: pointer;
+
+          background-color: #a4a2a2;
+          border-radius: 5px;
         }
       }
     }
   }
 
-  @media (min-width: 769px) {
-    flex-direction: row;
-    padding: 30px 150px;
-
-    justify-content: space-between;
-
-    .schedule {
-      width: 350px;
-      height: 550px;
-    }
-  }
-`;
-
-export const StyledFormContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
 
     background-color: rgba(0, 0, 0, 0.6);
 
-    border: 1px solid yellow;
+    border: 1px solid #f9cc00;
     border-radius: 5px;
 
-    padding: 25px 10px;
-    gap: 40px;
+    height: 350px;
+    width: 100%;
+
+    h3 {
+      text-align: center;
+
+      font-size: 22px;
+
+      color: #ffffff;
+    }
 
     label {
       display: flex;
       flex-direction: column;
 
-      color: white;
+      margin-left: 15px;
 
-      gap: 15px;
-    }
-    .total {
-      display: flex;
-      justify-content: space-between;
+      font-size: 12px;
+      color: #ffffff;
 
-      padding: 0 20px;
-      color: white;
+      select {
+        width: 90%;
+        height: 30px;
 
-      border-bottom: 1px solid;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+
+        border: 1px solid white;
+        border-radius: 5px;
+
+        padding: 0 5px;
+      }
     }
 
     button {
-      height: 30px;
-
-      border-radius: 5px;
-      border: 1px solid white;
-
-      background-color: transparent;
-      color: white;
-    }
-
-    select {
-      width: 100%;
+      width: 90%;
       height: 30px;
 
       background-color: rgba(0, 0, 0, 0.5);
-      color: white;
+      color: #ffffff;
 
-      border: 1px solid white;
+      border: 1px solid #ffffff;
       border-radius: 5px;
 
-      padding: 0 5px;
-
-      option {
-       border-bottom: 1px solid green;
-        
-        max-height: 10px;
-      }
+      margin-left: 15px;
     }
   }
 
-  @media (min-width: 769px) {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-end;
+  @media (min-width: 900px) {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .schedule {
+      width: 37%;
+      height: 70%;
+
+      li {
+        div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          width: 100%;
+        }
+      }
+    }
 
     form {
-      width: 450px;
+      width: 37%;
+      height: 70%;
     }
   }
 `;

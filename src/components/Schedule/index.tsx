@@ -1,8 +1,9 @@
-import { StyledContainer, StyledFormContainer } from "./style";
+import { StyledContainer } from "./style";
 import { ServicesContext } from "../../context/ServicesContext";
 import { useContext, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { getAvailableHours } from "./fragmentSchedule";
+import trash from "../../assets/icons8-excluir.svg";
 
 export interface IServices {
   name: string;
@@ -46,7 +47,7 @@ export const Schedule = () => {
   return (
     <StyledContainer>
       <div className="schedule">
-        <h2>Seus agendamentos</h2>
+        <h3>Seus agendamentos</h3>
         <ul>
           {appointments.length !== 0
             ? appointments.map((appointment) => {
@@ -57,6 +58,7 @@ export const Schedule = () => {
                         <p>{appointment.name}</p>
                         <span>{`${appointment.date} ás ${appointment.hour}`}</span>
                       </div>
+                      <img src={trash} alt="delete" />
                     </li>
                   );
                 }
@@ -65,62 +67,58 @@ export const Schedule = () => {
         </ul>
       </div>
 
-      <StyledFormContainer>
-        <form onSubmit={handleSubmit(submit as SubmitHandler<FieldValues>)}>
-          <label>
-            Tipo de serviço
-            <select {...register("name")}>
-              {services
-                ? services.map((service) => {
-                    return (
-                      <option key={service.id} value={service.name}>
-                        {`${service.name} R$${service.price}`}
-                      </option>
-                    );
-                  })
-                : null}
-            </select>
-          </label>
-          <label>
-            <select
-              {...register("date", { required: true })}
-              onChange={(e) => {
-                setSelectedDay(e.target.value);
-                setIsDaySelected(e.target.value !== "Selecionar dia");
-              }}
-            >
-              <option>Selecionar dia</option>
-              {available
-                ? available.map((date) => {
-                    return (
-                      <option key={date.weekDay} value={date.weekDay}>
-                        {date.weekDay}
-                      </option>
-                    );
-                  })
-                : null}
-            </select>
-          </label>
-          <label>
-            Horário
-            <select disabled={!isDaySelected} {...register("hour", { required: true })}>
-              {getAvailableHours(selectedDay).map((hour) => {
-                return (
-                  <option key={hour} value={hour}>
-                    {hour}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-          <div className="total">
-            <small>Total</small>
-            <small>10,00</small>
-          </div>
+      <form onSubmit={handleSubmit(submit as SubmitHandler<FieldValues>)}>
+        <h3>Agende seu horário</h3>
+        <label>
+          Tipo de serviço
+          <select {...register("name")}>
+            {services
+              ? services.map((service) => {
+                  return (
+                    <option key={service.id} value={service.name}>
+                      {`${service.name} R$${service.price}`}
+                    </option>
+                  );
+                })
+              : null}
+          </select>
+        </label>
+        <label>
+          Selecionar dia
+          <select
+            {...register("date", { required: true })}
+            onChange={(e) => {
+              setSelectedDay(e.target.value);
+              setIsDaySelected(e.target.value !== "Selecionar dia");
+            }}
+          >
+            <option>Dia</option>
+            {available
+              ? available.map((date) => {
+                  return (
+                    <option key={date.weekDay} value={date.weekDay}>
+                      {date.weekDay}
+                    </option>
+                  );
+                })
+              : null}
+          </select>
+        </label>
+        <label>
+          Horário
+          <select disabled={!isDaySelected} {...register("hour", { required: true })}>
+            {getAvailableHours(selectedDay).map((hour) => {
+              return (
+                <option key={hour} value={hour}>
+                  {hour}
+                </option>
+              );
+            })}
+          </select>
+        </label>
 
-          <button disabled={!isDaySelected}>Agendar</button>
-        </form>
-      </StyledFormContainer>
+        <button disabled={!isDaySelected}>Agendar</button>
+      </form>
     </StyledContainer>
   );
 };
