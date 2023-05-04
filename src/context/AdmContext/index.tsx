@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
 
@@ -11,7 +11,8 @@ interface IAdmProviders {
 interface IServiceContext {
   addServices: (formData: IServiceAdm) => Promise<void>;
   editServices: (formData: IEditServiceAdm) => Promise<void>;
-  deleteServices: (id: number) => Promise<void>
+  deleteServices: () => Promise<void>;
+  setIdService: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface IServiceAdm {
@@ -24,6 +25,8 @@ export interface IEditServiceAdm {
 }
 
 export const AdmProvider = ({ children }: IAdmProviders) => {
+  const [idService, setIdService] = useState(0);
+
   const addServices = async (formData: IServiceAdm) => {
     const token = localStorage.getItem("@TOKEN");
     try {
@@ -41,7 +44,7 @@ export const AdmProvider = ({ children }: IAdmProviders) => {
   const editServices = async (formData: IEditServiceAdm) => {
     const token = localStorage.getItem("@TOKEN");
     try {
-      const response = await api.patch("/services", formData, {
+      const response = await api.patch(`/services/${idService}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -52,10 +55,10 @@ export const AdmProvider = ({ children }: IAdmProviders) => {
     }
   };
 
-  const deleteServices = async (id:number) => {
+  const deleteServices = async () => {
     const token = localStorage.getItem("@TOKEN");
     try {
-      const response = await api.delete(`/services${id}`, {
+      const response = await api.delete(`/services${idService}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -66,5 +69,5 @@ export const AdmProvider = ({ children }: IAdmProviders) => {
     }
   };
 
-  return <AdmContext.Provider value={{ addServices, editServices, deleteServices }}>{children}</AdmContext.Provider>;
+  return <AdmContext.Provider value={{ addServices, editServices, deleteServices, setIdService }}>{children}</AdmContext.Provider>;
 };

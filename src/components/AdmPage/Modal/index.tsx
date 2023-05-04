@@ -6,8 +6,9 @@ interface IModal {
   closeModalServices: () => void;
   modalServices: boolean;
   editServices: (formData: IEditServiceAdm) => Promise<void>;
+  deleteServices: () => Promise<void>;
 }
-export const ModalEditService = ({ modalServices, closeModalServices, editServices }: IModal) => {
+export const ModalEditService = ({ modalServices, closeModalServices, editServices, deleteServices }: IModal) => {
   const {
     register,
     handleSubmit,
@@ -22,6 +23,7 @@ export const ModalEditService = ({ modalServices, closeModalServices, editServic
       ...formData,
       userId: userID,
     };
+    console.log(data);
     editServices(data);
   };
 
@@ -37,7 +39,7 @@ export const ModalEditService = ({ modalServices, closeModalServices, editServic
                 <Input type="text" id="edit-price" placeholder="Editar preço" {...register("price")} />
                 <button>Editar preço</button>
               </form>
-              <button>excluir Serviço</button>
+              <button onClick={() => deleteServices()}>excluir Serviço</button>
             </div>
           </div>
         </div>

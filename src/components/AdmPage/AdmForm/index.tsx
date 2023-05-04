@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { StyledContainer } from "../../Schedule/style";
 import { ServicesContext } from "../../../context/ServicesContext";
 import { StyledServicesContainer, ModalBackdrop } from "./styled";
@@ -19,8 +19,7 @@ interface IModal {
 
 export const AdmForm = ({ openModal, closeModal, isModalOpen, openModalServices, closeModalServices, modalServices }: IModal) => {
   const { appointments, services } = useContext(ServicesContext);
-  const { addServices, editServices } = useContext(AdmContext);
-  const [test, setTest] = useState(0);
+  const { addServices, editServices, setIdService, deleteServices } = useContext(AdmContext);
 
   const {
     register,
@@ -96,7 +95,7 @@ export const AdmForm = ({ openModal, closeModal, isModalOpen, openModalServices,
                   return (
                     <li
                       onClick={() => {
-                        openModalServices(), setTest(service.id);
+                        openModalServices(), setIdService(service.id);
                       }}
                       key={service.id}
                       id={service.id}
@@ -106,7 +105,12 @@ export const AdmForm = ({ openModal, closeModal, isModalOpen, openModalServices,
                     </li>
                   );
                 })}
-                <ModalEditService modalServices={modalServices} closeModalServices={closeModalServices} editServices={editServices} />
+                <ModalEditService
+                  modalServices={modalServices}
+                  closeModalServices={closeModalServices}
+                  editServices={editServices}
+                  deleteServices={deleteServices}
+                />
               </ul>
             </div>
           </StyledServicesContainer>

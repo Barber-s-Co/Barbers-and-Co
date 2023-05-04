@@ -39,7 +39,7 @@ export const ServicesProvider = ({ children }: IServicesProviders) => {
   const [services, setServices] = useState<IServices[]>([]);
   const [available, setAvailable] = useState<IAvailable[]>([]);
   const [appointments, setAppointments] = useState<IApointment[]>([]);
-  console.log(appointments);
+
   const getServices = async () => {
     try {
       const response = await api.get("/services");
