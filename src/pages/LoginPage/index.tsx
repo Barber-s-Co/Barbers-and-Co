@@ -2,6 +2,7 @@ import { LoginForm } from "../../components/Form/LoginForm";
 import logo from "../../assets/logoName.svg";
 import { StyleLoginPage } from "./style";
 import { NavHeader, StyleHeader } from "../HomePage/style";
+import { Link } from "react-router-dom";
 
 export const LoginPage = () => {
   return (
