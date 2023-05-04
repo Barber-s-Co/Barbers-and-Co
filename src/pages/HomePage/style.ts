@@ -9,7 +9,7 @@ export const StyleHeader = styled.header`
   background-color: #191919;
   justify-content: space-between;
   align-items: center;
-  padding: 0 3.125rem;
+  padding: 0 10%;
   position: fixed;
   top: 0;
   z-index: 1;

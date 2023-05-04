@@ -6,9 +6,13 @@ export const StyleLoginPage = styled.main`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImg});
   background-position: -250px center;
+
   background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 
   .login__form {
     display: flex;
