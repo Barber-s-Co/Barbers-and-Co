@@ -6,7 +6,9 @@ export const StyledHeader = styled.header`
 
   height: 70px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+
 
   .container {
     display: flex;
@@ -51,5 +53,4 @@ export const StyledHeader = styled.header`
     }
   }
 
-  
 `;

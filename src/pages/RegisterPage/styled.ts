@@ -1,18 +1,17 @@
 import styled from "styled-components";
-import imgBackgound from "../../assets/imgBackground1.svg";
 
 export const StyledRegisterPage = styled.div`
-  header {
-    padding: 0 1rem;
-  }
-
   main {
     display: flex;
     align-items: center;
     justify-content: center;
-
     height: 100vh;
-    background-image: url("https://img.freepik.com/fotos-gratis/homem-em-um-salao-de-barbearia-fazendo-o-corte-de-cabelo-e-barba_1303-20953.jpg?w=2000");
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+      ),
+      url("https://img.freepik.com/fotos-gratis/homem-em-um-salao-de-barbearia-fazendo-o-corte-de-cabelo-e-barba_1303-20953.jpg?w=2000");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -32,12 +31,8 @@ export const StyledRegisterPage = styled.div`
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
   }
-
-  img {
-    width: 150px;
-  }
-
   input {
     height: 40px;
     width: 100%;
@@ -58,6 +53,8 @@ export const StyledRegisterPage = styled.div`
 
     color: white;
     background-color: #f9cc00;
+    cursor: pointer;
+    border-radius: 5px;
   }
 
   .header_register {
