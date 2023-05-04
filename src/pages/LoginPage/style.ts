@@ -36,5 +36,8 @@ export const StyleLoginPage = styled.main`
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
+    @media (min-width: 405px) {
+      width: 400px;
+    }
   }
 `;
