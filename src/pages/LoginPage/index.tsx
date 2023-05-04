@@ -1,20 +1,22 @@
 import { LoginForm } from "../../components/Form/LoginForm";
-import { Header } from "../../components/Header";
-import Logo from "../../assets/logoB&C.svg";
+import logo from "../../assets/logoName.svg";
 import { StyleLoginPage } from "./style";
+import { NavHeader, StyleHeader } from "../HomePage/style";
 
 export const LoginPage = () => {
   return (
     <>
-      <header>
-        <Header
-          rote="/register"
-          linkName="Registrar"
-          src={Logo}
-          alt="Logo Barber's & Co"
-          className="logoImg"
-        />
-      </header>
+      <StyleHeader>
+        <img src={logo} alt="logo" />
+        <NavHeader>
+          <Link to="/" className="loginBtn">
+            Home
+          </Link>
+          <Link to="/register" className="registerBtn">
+            Cadastrar
+          </Link>
+        </NavHeader>
+      </StyleHeader>
       <StyleLoginPage>
         <div className="login__form">
           <LoginForm />

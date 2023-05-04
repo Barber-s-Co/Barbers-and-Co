@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import imgBackgound from "../../assets/imgBackground1.svg";
 
 export const StyledRegisterPage = styled.div`
   main {
@@ -34,11 +33,6 @@ export const StyledRegisterPage = styled.div`
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
   }
-
-  div {
-    width: 100%;
-  }
-
   input {
     height: 40px;
     width: 100%;

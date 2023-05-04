@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "../../assets/logoName.svg";
 import Logo from "../../assets/logoB&C.svg";
 import serviceLogo from "../../assets/servicesLogo.svg";
