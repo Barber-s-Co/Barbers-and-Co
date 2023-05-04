@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { LoginForm } from "../../components/Form/LoginForm";
 import { Header } from "../../components/Header";
 import Logo from "../../assets/logoB&C.svg";
@@ -13,21 +12,12 @@ export const LoginPage = () => {
           linkName="Registrar"
           src={Logo}
           alt="Logo Barber's & Co"
-          className="logoLoginRegister"
+          className="logoImg"
         />
       </header>
       <StyleLoginPage>
-        <div>
-          <div className="login__form">
-            <h2>Login</h2>
-            <LoginForm />
-            <p className="register__paragraph">
-              Crie sua conta e aproveite o melhor serviço da cidade!
-            </p>
-            <Link to="/register" className="register__btn">
-              Cadastrar
-            </Link>
-          </div>
+        <div className="login__form">
+          <LoginForm />
         </div>
       </StyleLoginPage>
     </>
