@@ -32,6 +32,10 @@ export const StyledRegisterPage = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
+
+    @media (min-width: 405px) {
+      width: 400px;
+    }
   }
   input {
     height: 40px;
@@ -55,10 +59,5 @@ export const StyledRegisterPage = styled.div`
     background-color: #f9cc00;
     cursor: pointer;
     border-radius: 5px;
-  }
-
-  .header_register {
-    display: flex;
-    gap: 1rem;
   }
 `;
