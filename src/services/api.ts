@@ -1,7 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const api = axios.create({
-  baseURL: 'https://json-server-group6.onrender.com',
+  baseURL: "https://json-server-group6.onrender.com",
   timeout: 8000,
 });
-

@@ -42,6 +42,7 @@ export const StyledRegisterPage = styled.div`
     height: 40px;
     width: 100%;
     margin-top: 0.5rem;
+    color: white;
   }
   input::placeholder {
     color: grey;
