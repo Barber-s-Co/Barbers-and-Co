@@ -1,10 +1,7 @@
 import styled from "styled-components";
-import imgBackgound from "../../assets/imgBackground1.svg";
 
 export const StyledRegisterPage = styled.div`
-  header {
-    padding: 0 1rem;
-  }
+ 
 
   main {
     display: flex;
@@ -32,10 +29,6 @@ export const StyledRegisterPage = styled.div`
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgb(0, 0, 0);
-  }
-
-  img {
-    width: 150px;
   }
 
   input {
