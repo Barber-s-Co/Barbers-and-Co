@@ -35,7 +35,7 @@ export const StyleLoginPage = styled.main`
     align-items: center;
     gap: 1rem;
     width: 88%;
-    padding: 1rem;
+    padding: 1rem 2rem;
     background-color: white;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);

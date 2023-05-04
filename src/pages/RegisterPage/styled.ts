@@ -33,6 +33,26 @@ export const StyledRegisterPage = styled.div`
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
 
+    .div_btn_register {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .div_form_register {
+      display: flex;
+      flex-direction: column;
+      max-width: 340px;
+      gap: 1rem;
+    }
+
+    p {
+      font-size: 0.75rem;
+      margin-top: 5px;
+      color: #d83737;
+    }
+
     @media (min-width: 405px) {
       width: 400px;
     }
@@ -54,13 +74,17 @@ export const StyledRegisterPage = styled.div`
 
     button {
       height: 40px;
+      max-width: 100%;
       width: 100%;
       opacity: 80%;
-
       color: white;
-      background-color: #f9cc00;
+      background-color: #f9da00;
       cursor: pointer;
       border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #f9cc00;
     }
   }
 `;
