@@ -7,7 +7,7 @@ export const StyledMain = styled.main`
   width: 100%;
   height: 100%;
 
-  padding: 25px 0;
+  padding: 80px 0 25px 0;
 
   background-color: #282828;
 

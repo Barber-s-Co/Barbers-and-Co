@@ -29,7 +29,7 @@ export const ModalEditService = ({ modalServices, closeModalServices, editServic
 
   return (
     <>
-      {modalServices ? (
+     
         <div className="modal-services">
           <div className="modal-services--content">
             <span onClick={() => closeModalServices()}>X</span>
@@ -43,7 +43,7 @@ export const ModalEditService = ({ modalServices, closeModalServices, editServic
             </div>
           </div>
         </div>
-      ) : null}
+      
     </>
   );
 };

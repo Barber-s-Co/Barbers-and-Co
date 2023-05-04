@@ -9,7 +9,6 @@ export const StyledHeader = styled.header`
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
 
-
   .container {
     display: flex;
     align-items: center;
@@ -44,13 +43,17 @@ export const StyledHeader = styled.header`
 
     button {
       color: white;
-      border-bottom: 3px solid #f9cc00;
 
       font-size: 18px;
       font-weight: 600;
 
       background-color: transparent;
+
+      max-height: 1.6875rem;
+
+      :hover {
+        border-bottom: 3px solid #f9cc00;
+      }
     }
   }
-
 `;

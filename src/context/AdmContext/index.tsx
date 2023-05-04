@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
+import { ServicesContext } from "../ServicesContext";
 
 export const AdmContext = createContext({} as IServiceContext);
 
@@ -13,6 +14,9 @@ interface IServiceContext {
   editServices: (formData: IEditServiceAdm) => Promise<void>;
   deleteServices: () => Promise<void>;
   setIdService: React.Dispatch<React.SetStateAction<number>>;
+  closeModalServices: () => void;
+  setModalServices: React.Dispatch<React.SetStateAction<boolean>>;
+  modalServices: boolean;
 }
 
 export interface IServiceAdm {
@@ -26,6 +30,12 @@ export interface IEditServiceAdm {
 
 export const AdmProvider = ({ children }: IAdmProviders) => {
   const [idService, setIdService] = useState(0);
+  const [modalServices, setModalServices] = useState(false);
+console.log(idService)
+
+  const { setServices, services } = useContext(ServicesContext);
+
+  const closeModalServices = () => setModalServices(false);
 
   const addServices = async (formData: IServiceAdm) => {
     const token = localStorage.getItem("@TOKEN");
@@ -35,12 +45,14 @@ export const AdmProvider = ({ children }: IAdmProviders) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      setModalServices(false)
+      setServices([...services, response.data]);
       toast.success("Serviço cadastrado");
     } catch (error) {
       console.log(error);
     }
   };
-
+  
   const editServices = async (formData: IEditServiceAdm) => {
     const token = localStorage.getItem("@TOKEN");
     try {
@@ -69,5 +81,11 @@ export const AdmProvider = ({ children }: IAdmProviders) => {
     }
   };
 
-  return <AdmContext.Provider value={{ addServices, editServices, deleteServices, setIdService }}>{children}</AdmContext.Provider>;
+  return (
+    <AdmContext.Provider
+      value={{ addServices, editServices, deleteServices, setIdService, closeModalServices, setModalServices, modalServices }}
+    >
+      {children}
+    </AdmContext.Provider>
+  );
 };

@@ -72,7 +72,7 @@ export const UserProvider = ({ children }: IUserProviders) => {
     try {
       setLoading(true);
       const { data } = await api.post<IUserLoginResponse>("/login", formData);
-      
+
       localStorage.setItem("@TOKEN", data.accessToken);
       localStorage.setItem("@USERID", String(data.user.id));
       setUser(data.user);
@@ -82,7 +82,7 @@ export const UserProvider = ({ children }: IUserProviders) => {
         navigate("/userPage");
       }
     } catch (error) {
-      toast.error("Usuário não cadastrado");
+      toast.error("Senha ou Email incorreto");
     } finally {
       setLoading(false);
     }

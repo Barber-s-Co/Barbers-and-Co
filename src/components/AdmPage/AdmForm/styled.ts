@@ -28,6 +28,8 @@ export const StyledContainer = styled.div`
 
     padding: 10px 5px;
 
+    color: white;
+
     h3 {
       font-size: 22px;
 
@@ -46,6 +48,7 @@ export const StyledContainer = styled.div`
       overflow-y: auto;
 
       padding: 8px 0;
+      gap: 15px;
 
       li {
         display: flex;
@@ -70,13 +73,22 @@ export const StyledContainer = styled.div`
           border-radius: 5px;
         }
       }
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color: #282828;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #404040;
+      }
     }
   }
 
   .service-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     background-color: rgba(0, 0, 0, 0.6);
@@ -89,35 +101,51 @@ export const StyledContainer = styled.div`
 
     color: white;
 
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      height: 50px;
-      width: 50%;
-
-      background-color: #404040;
-      color: white;
-
-      padding: 5px 10px;
-
-      border-radius: 5px;
-
-      font-size: 18px;
-     
-    }
-
-    ul{
+    .service-header {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 10px 0;
+
+      width: 100%;
+      height: 175px;
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 35px;
+        width: 50%;
+
+        background-color: #404040;
+        color: white;
+
+        padding: 5px 10px;
+
+        border-radius: 5px;
+
+        font-size: 14px;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
       align-items: center;
 
       padding: 10px 5px;
-      gap: 10px;
-      
-      li{
+      gap: 15px;
+
+      max-height: 175px;
+      height: 175px;
+      width: 100%;
+
+      overflow-y: auto;
+
+      li {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -127,10 +155,22 @@ export const StyledContainer = styled.div`
 
         width: 90%;
 
+        height: 35px;
+
         padding: 5px 10px;
 
         color: #ffffff;
-      };
+      }
+
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color: #282828;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #404040;
+      }
     }
   }
 
@@ -153,7 +193,7 @@ export const StyledContainer = styled.div`
       }
     }
 
-    .service-content{
+    .service-content {
       width: 37%;
       height: 70%;
     }

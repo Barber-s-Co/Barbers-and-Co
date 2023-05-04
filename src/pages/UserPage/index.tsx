@@ -6,7 +6,7 @@ import { StyledMain } from "./styles";
 export const UserPage = () => {
   return (
     <>
-      <Header src={logo} alt="logo" rote="/" linkName="sair" className="logoImg" />
+      <Header src={logo} alt="logo" rote="/" linkName="Sair" className="logoImg" />
       <StyledMain>
         <div className="container">
           <Schedule />
