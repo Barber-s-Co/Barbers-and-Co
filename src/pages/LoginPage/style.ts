@@ -1,16 +1,12 @@
 import styled from "styled-components";
+import backgroundImg from "../../assets/jovem-na-barbearia-aparando-cabelo.svg";
 
 export const StyleLoginPage = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ),
-    url(src/assets/jovem-na-barbearia-aparando-cabelo.svg);
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImg});
   background-position: -250px center;
   background-size: cover;
 
