@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import { StyledContainer } from "../../Schedule/style";
 import { ServicesContext } from "../../../context/ServicesContext";
-import { StyledServicesContainer, ModalBackdrop } from "./styled";
+import { ModalBackdrop, StyledContainer } from "./styled";
 import { Input } from "../../Form/Input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { AdmContext, IServiceAdm } from "../../../context/AdmContext";
@@ -83,37 +82,35 @@ export const AdmForm = ({ openModal, closeModal, isModalOpen, openModalServices,
             </ul>
           </div>
 
-          <StyledServicesContainer>
-            <div className="service-content">
-              <h2>Gerenciamento de Serviços</h2>
+          <div className="service-content">
+            <h2>Gerenciamento de Serviços</h2>
 
-              <button onClick={() => openModal()}>Adicionar serviço</button>
+            <button onClick={() => openModal()}>Adicionar serviço</button>
 
-              <ul>
-                <h2>Tipos de serviços</h2>
-                {services.map((service) => {
-                  return (
-                    <li
-                      onClick={() => {
-                        openModalServices(), setIdService(service.id);
-                      }}
-                      key={service.id}
-                      id={service.id}
-                    >
-                      <p>{service.name}</p>
-                      <p>{service.price}</p>
-                    </li>
-                  );
-                })}
-                <ModalEditService
-                  modalServices={modalServices}
-                  closeModalServices={closeModalServices}
-                  editServices={editServices}
-                  deleteServices={deleteServices}
-                />
-              </ul>
-            </div>
-          </StyledServicesContainer>
+            <ul>
+              <h2>Tipos de serviços</h2>
+              {services.map((service) => {
+                return (
+                  <li
+                    onClick={() => {
+                      openModalServices(), setIdService(service.id);
+                    }}
+                    key={service.id}
+                    id={service.id.toString()}
+                  >
+                    <p>{service.name}</p>
+                    <p>R$ {service.price}</p>
+                  </li>
+                );
+              })}
+              <ModalEditService
+                modalServices={modalServices}
+                closeModalServices={closeModalServices}
+                editServices={editServices}
+                deleteServices={deleteServices}
+              />
+            </ul>
+          </div>
         </StyledContainer>
       )}
     </>
