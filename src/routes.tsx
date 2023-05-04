@@ -11,29 +11,31 @@ import { Homepage } from "./pages/HomePage";
 export const Router = () => {
   return (
     <Routes>
-    <Route path="/" element={<Homepage />} />
-    <Route path="/login" element={<LoginPage />} />
-    <Route path="/register" element={<RegisterPage />} />
-    <Route path="/admPage" element={<ProtectRoutes />}>
-      <Route index element={
-       <ServicesProvider>
-      <AdmProvider>
-        <AdmPage/>
-      </AdmProvider>}/>
-       <ServicesProvider/>
-      
-    </Route>
-    <Route path="/userPage" element={<ProtectRoutes />}>
-      <Route
-        index
-        element={
-          <ServicesProvider>
-            <UserPage/>
-          </ServicesProvider>
-        }
-      />
-    </Route>
-    
-  </Routes>
+      <Route path="/" element={<Homepage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/admPage" element={<ProtectRoutes />}>
+        <Route
+          index
+          element={
+            <ServicesProvider>
+              <AdmProvider>
+                <AdmPage />
+              </AdmProvider>
+            </ServicesProvider>
+          }
+        />
+      </Route>
+      <Route path="/userPage" element={<ProtectRoutes />}>
+        <Route
+          index
+          element={
+            <ServicesProvider>
+              <UserPage />
+            </ServicesProvider>
+          }
+        />
+      </Route>
+    </Routes>
   );
 };
