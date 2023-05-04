@@ -19,11 +19,13 @@ export const Header = ({ rote, linkName, src, alt, className }: IHeaderProps) =>
 
   return (
     <StyledHeader>
-      <div>
-        <img src={src} alt={alt} className={className} />
-      </div>
+      <div className="container">
+        <div>
+          <img src={src} alt={alt} className={className} />
+        </div>
 
-      <div>{token ? <button onClick={() => logout()}>{linkName}</button> : <Link to={rote}>{linkName}</Link>}</div>
+        <div>{token ? <button onClick={() => logout()}>{linkName}</button> : <Link to={rote}>{linkName}</Link>}</div>
+      </div>
     </StyledHeader>
   );
 };
