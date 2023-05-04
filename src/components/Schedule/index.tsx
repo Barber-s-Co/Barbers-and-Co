@@ -36,16 +36,11 @@ export const Schedule = () => {
     const id = localStorage.getItem("@USERID") || "null";
     const userID = parseInt(id);
 
-    appointments.find((appointment) => {
-      if (appointment.date === formData.date) {
-        console.log("oi");
-      }
-      const data = {
-        ...formData,
-        userId: userID,
-      };
-      postSchedule(data);
-    });
+    const data = {
+      ...formData,
+      userId: userID,
+    };
+    postSchedule(data);
   };
 
   return (
@@ -53,7 +48,7 @@ export const Schedule = () => {
       <div className="schedule">
         <h2>Seus agendamentos</h2>
         <ul>
-          {appointments
+          {appointments.length !== 0
             ? appointments.map((appointment) => {
                 if (appointment.userId == userID) {
                   return (

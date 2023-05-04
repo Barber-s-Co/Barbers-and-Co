@@ -9,15 +9,7 @@ interface IHeaderProps {
   className: string;
 }
 
-
-export const Header = ({
-  rote,
-  linkName,
-  src,
-  alt,
-  className,
-}: IHeaderProps) => {
-
+export const Header = ({ rote, linkName, src, alt, className }: IHeaderProps) => {
   const token = localStorage.getItem("@TOKEN");
   const navigate = useNavigate();
   const logout = () => {
@@ -28,18 +20,10 @@ export const Header = ({
   return (
     <StyledHeader>
       <div>
-
         <img src={src} alt={alt} className={className} />
       </div>
 
-      <div>
-        {token ? (
-          <button onClick={() => logout()}>{linkName}</button>
-        ) : (
-          <Link to={rote}>{linkName}</Link>
-        )}
-      </div>
-
+      <div>{token ? <button onClick={() => logout()}>{linkName}</button> : <Link to={rote}>{linkName}</Link>}</div>
     </StyledHeader>
   );
 };

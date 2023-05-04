@@ -15,10 +15,12 @@ export const Router = () => {
     <Route path="/login" element={<LoginPage />} />
     <Route path="/register" element={<RegisterPage />} />
     <Route path="/admPage" element={<ProtectRoutes />}>
-      <Route index element={<AdmProvider>
+      <Route index element={
+       <ServicesProvider>
+      <AdmProvider>
         <AdmPage/>
       </AdmProvider>}/>
-    
+       <ServicesProvider/>
       
     </Route>
     <Route path="/userPage" element={<ProtectRoutes />}>

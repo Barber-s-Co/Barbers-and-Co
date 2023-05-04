@@ -22,6 +22,10 @@ export const StyledContainer = styled.div`
 
     color: white;
 
+    h2{
+      font-size: 20px;
+    }
+
     ul {
       display: flex;
       flex-direction: column;
