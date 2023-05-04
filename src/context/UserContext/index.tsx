@@ -94,7 +94,7 @@ export const UserProvider = ({ children }: IUserProviders) => {
       await api.post<IUserRegisterResponse>("/users", formData);
       toast.success("Cadastro realizado com sucesso!");
       setTimeout(() => {
-        navigate("/");
+        navigate("/login");
       }, 2000);
     } catch (error) {
       toast.error("Ops! Algo deu errado");
