@@ -36,29 +36,31 @@ export const StyledRegisterPage = styled.div`
     @media (min-width: 405px) {
       width: 400px;
     }
-  }
-  input {
-    height: 40px;
-    width: 100%;
-    margin-top: 0.5rem;
-    color: white;
-  }
-  input::placeholder {
-    color: grey;
-  }
 
-  label {
-    font-size: 1rem;
-  }
+    input {
+      height: 40px;
+      width: 100%;
+      margin-top: 0.5rem;
+      color: white;
+    }
 
-  button {
-    height: 40px;
-    width: 100%;
-    opacity: 80%;
+    input::placeholder {
+      color: grey;
+    }
 
-    color: white;
-    background-color: #f9cc00;
-    cursor: pointer;
-    border-radius: 5px;
+    label {
+      font-size: 1rem;
+    }
+
+    button {
+      height: 40px;
+      width: 100%;
+      opacity: 80%;
+
+      color: white;
+      background-color: #f9cc00;
+      cursor: pointer;
+      border-radius: 5px;
+    }
   }
 `;
