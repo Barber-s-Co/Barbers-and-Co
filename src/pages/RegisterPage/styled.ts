@@ -76,15 +76,16 @@ export const StyledRegisterPage = styled.div`
       height: 40px;
       max-width: 100%;
       width: 100%;
-      opacity: 80%;
-      color: white;
+      color: black;
+      font-weight: 700;
+      font-size: 1rem;
       background-color: #f9da00;
       cursor: pointer;
       border-radius: 5px;
     }
 
     button:hover {
-      background-color: #f9cc00;
+      background-color: #ccb203;
     }
   }
 `;
