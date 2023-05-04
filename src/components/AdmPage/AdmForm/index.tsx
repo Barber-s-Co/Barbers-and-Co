@@ -19,7 +19,7 @@ interface IModal {
 export const AdmForm = ({ openModal, closeModal, isModalOpen, openModalServices, closeModalServices, modalServices }: IModal) => {
   const { appointments, services } = useContext(ServicesContext);
   const { addServices, editServices, setIdService, deleteServices } = useContext(AdmContext);
-
+console.log(modalServices)
   const {
     register,
     handleSubmit,
@@ -83,13 +83,15 @@ export const AdmForm = ({ openModal, closeModal, isModalOpen, openModalServices,
           </div>
 
           <div className="service-content">
-            <h2>Gerenciamento de Serviços</h2>
+            <div className="service-header">
+              <h2>Gerenciamento de Serviços</h2>
 
-            <button onClick={() => openModal()}>Adicionar serviço</button>
-
-            <ul>
+              <button onClick={() => openModal()}>Adicionar serviço</button>
               <h2>Tipos de serviços</h2>
+            </div>
+            <ul>
               {services.map((service) => {
+                const price = parseFloat(service.price);
                 return (
                   <li
                     onClick={() => {
@@ -99,17 +101,20 @@ export const AdmForm = ({ openModal, closeModal, isModalOpen, openModalServices,
                     id={service.id.toString()}
                   >
                     <p>{service.name}</p>
-                    <p>R$ {service.price}</p>
+                    <p>R$ {price.toFixed(2)}</p>
                   </li>
                 );
               })}
+            </ul>
+
+            {modalServices ? (
               <ModalEditService
                 modalServices={modalServices}
                 closeModalServices={closeModalServices}
                 editServices={editServices}
                 deleteServices={deleteServices}
               />
-            </ul>
+            ) : null}
           </div>
         </StyledContainer>
       )}

@@ -10,15 +10,17 @@ interface IServicesProviders {
 
 interface IServiesContext {
   services: IServices[];
+  setServices: React.Dispatch<React.SetStateAction<IServices[]>>;
   available: IAvailable[];
   appointments: IApointment[];
+
   postSchedule: (formData: ISchedulingFormData) => Promise<void>;
 }
 
 interface IServices {
   name: string;
   id: number;
-  price: number;
+  price: string;
   userId: number;
 }
 
@@ -89,5 +91,7 @@ export const ServicesProvider = ({ children }: IServicesProviders) => {
     myAppointments();
   }, []);
 
-  return <ServicesContext.Provider value={{ services, available, postSchedule, appointments }}>{children}</ServicesContext.Provider>;
+  return (
+    <ServicesContext.Provider value={{ services, available, postSchedule, appointments, setServices }}>{children}</ServicesContext.Provider>
+  );
 };

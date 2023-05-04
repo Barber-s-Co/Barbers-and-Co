@@ -46,6 +46,7 @@ export const StyledContainer = styled.div`
       overflow-y: auto;
 
       padding: 8px 0;
+      gap: 15px;
 
       li {
         display: flex;
@@ -83,6 +84,8 @@ export const StyledContainer = styled.div`
     border: 1px solid #f9cc00;
     border-radius: 5px;
 
+    padding: 0 10px;
+
     height: 350px;
     width: 100%;
 
@@ -98,14 +101,16 @@ export const StyledContainer = styled.div`
       display: flex;
       flex-direction: column;
 
-      margin-left: 15px;
+      width: 100%;
 
       font-size: 12px;
       color: #ffffff;
 
+      gap: 5px;
+
       select {
-        width: 90%;
-        height: 30px;
+        width: 100%;
+        height: 40px;
 
         background-color: rgba(0, 0, 0, 0.5);
         color: white;
@@ -114,12 +119,14 @@ export const StyledContainer = styled.div`
         border-radius: 5px;
 
         padding: 0 5px;
+
+        margin: 0 auto;
       }
     }
 
     button {
       width: 90%;
-      height: 30px;
+      height: 40px;
 
       background-color: rgba(0, 0, 0, 0.5);
       color: #ffffff;
@@ -127,7 +134,17 @@ export const StyledContainer = styled.div`
       border: 1px solid #ffffff;
       border-radius: 5px;
 
-      margin-left: 15px;
+      margin: 0 auto;
+
+      :hover {
+        background-color: #f9cc00;
+
+        color: black;
+
+        font-weight: 700;
+
+        border: 1px solid black;
+      }
     }
   }
 
@@ -153,6 +170,22 @@ export const StyledContainer = styled.div`
     form {
       width: 37%;
       height: 70%;
+
+      label {
+        font-size: 16px;
+
+        select {
+          height: 50px;
+
+          font-size: 16px;
+        }
+      }
+
+      button {
+        height: 50px;
+
+        font-size: 18px;
+      }
     }
   }
 `;
