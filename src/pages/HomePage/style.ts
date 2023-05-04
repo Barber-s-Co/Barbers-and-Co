@@ -41,7 +41,12 @@ export const CentralLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(src/assets/cadeiras-vintage-na-barbearia.svg);
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url(src/assets/cadeiras-vintage-na-barbearia.svg);
   background-color: rgba(0, 0, 0, 0.9);
   height: 25.563rem;
   background-size: cover;
@@ -86,7 +91,12 @@ export const StyleServices = styled.div`
   display: flex;
   height: 40rem;
   width: 100%;
-  background-image: url(src/assets/jovem-na-barbearia-aparando-cabelo2.svg);
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url(src/assets/jovem-na-barbearia-aparando-cabelo2.svg);
   background-color: rgba(0, 0, 0, 0.9);
   background-size: cover;
   background-position: center;
@@ -184,7 +194,12 @@ export const SchedulingHome = styled.div`
 export const StyleFeedback = styled.div`
   width: 100%;
   height: 24.75rem;
-  background-image: url(src/assets/backgroundFeedback.svg);
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(src/assets/backgroundFeedback.svg);
   background-color: rgba(0, 0, 0, 10);
   background-size: cover;
   background-position: center;
