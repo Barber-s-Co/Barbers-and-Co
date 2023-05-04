@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import backgroundLogo from "../../assets/cadeiras-vintage-na-barbearia.svg";
+import backgroundServices from "../../assets/jovem-na-barbearia-aparando-cabelo2.svg";
+import backgroundFeedback from "../../assets/backgroundFeedback.svg";
 
 export const StyleMain = styled.main``;
 
@@ -46,7 +49,7 @@ export const CentralLogo = styled.div`
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.4)
     ),
-    url(src/assets/cadeiras-vintage-na-barbearia.svg);
+    url(${backgroundLogo});
   background-color: rgba(0, 0, 0, 0.9);
   height: 25.563rem;
   background-size: cover;
@@ -96,7 +99,7 @@ export const StyleServices = styled.div`
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.4)
     ),
-    url(src/assets/jovem-na-barbearia-aparando-cabelo2.svg);
+    url(${backgroundServices});
   background-color: rgba(0, 0, 0, 0.9);
   background-size: cover;
   background-position: center;
@@ -199,7 +202,7 @@ export const StyleFeedback = styled.div`
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-    url(src/assets/backgroundFeedback.svg);
+    url(${backgroundFeedback});
   background-color: rgba(0, 0, 0, 10);
   background-size: cover;
   background-position: center;
