@@ -6,8 +6,13 @@ export const StyleLoginPage = styled.main`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImg});
+
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url(${backgroundImg});
   background-position: -250px center;
 
   background-size: cover;
@@ -30,7 +35,7 @@ export const StyleLoginPage = styled.main`
     align-items: center;
     gap: 1rem;
     width: 88%;
-    padding: 1rem;
+    padding: 1rem 2rem;
     background-color: white;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
