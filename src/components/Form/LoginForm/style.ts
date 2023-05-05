@@ -25,17 +25,16 @@ export const StyledLoginForm = styled.form`
   button {
     height: 40px;
     width: 100%;
-    opacity: 80%;
     font-size: 1rem;
-
-    color: white;
+    font-weight: 700;
+    color: black;
     background-color: #f9da00;
     cursor: pointer;
     border-radius: 5px;
   }
 
   button:hover {
-    background-color: #f9cc00;
+    background-color: #ccb203;
   }
 
   .register__btn {
