@@ -13,8 +13,8 @@ interface IServiesContext {
   setServices: React.Dispatch<React.SetStateAction<IServices[]>>;
   available: IAvailable[];
   appointments: IApointment[];
-
   postSchedule: (formData: ISchedulingFormData) => Promise<void>;
+  deleteMyAppointments: (id: number) => Promise<void>;
 }
 
 interface IServices {
@@ -85,6 +85,22 @@ export const ServicesProvider = ({ children }: IServicesProviders) => {
     }
   };
 
+  const deleteMyAppointments = async (id: number) => {
+    const token = localStorage.getItem("@TOKEN");
+    console.log(token, id)
+    try {
+      const response = await api.delete(`/scheduling/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const updatedAppointments = appointments.filter((appointment) => appointment.id !== id);
+      setAppointments(updatedAppointments);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getServices();
     getSchedule();
@@ -92,6 +108,8 @@ export const ServicesProvider = ({ children }: IServicesProviders) => {
   }, []);
 
   return (
-    <ServicesContext.Provider value={{ services, available, postSchedule, appointments, setServices }}>{children}</ServicesContext.Provider>
+    <ServicesContext.Provider value={{ services, available, postSchedule, appointments, setServices, deleteMyAppointments }}>
+      {children}
+    </ServicesContext.Provider>
   );
 };

@@ -18,7 +18,7 @@ export const AdmForm = () => {
     modalServices,
     isModalOpen,
   } = useContext(AdmContext);
-  const { appointments, services } = useContext(ServicesContext);
+  const { appointments, services, deleteMyAppointments } = useContext(ServicesContext);
 
   return (
     <>
@@ -54,7 +54,6 @@ export const AdmForm = () => {
                         <p>{name.charAt(0).toUpperCase() + name.slice(1)}</p>
                         <span>{`${date.charAt(0).toUpperCase() + date.slice(1)} às ${hour}`}</span>
                       </div>
-                      <button>excluir</button>
                     </li>
                   );
                 })
