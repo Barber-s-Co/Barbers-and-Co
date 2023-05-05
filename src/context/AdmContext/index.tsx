@@ -15,8 +15,12 @@ interface IServiceContext {
   deleteServices: () => Promise<void>;
   setIdService: React.Dispatch<React.SetStateAction<number>>;
   closeModalServices: () => void;
+  openModalServices: () => void;
   setModalServices: React.Dispatch<React.SetStateAction<boolean>>;
+  openModal: () => void;
+  closeModal: () => void;
   modalServices: boolean;
+  isModalOpen: boolean;
 }
 
 export interface IServiceAdm {
@@ -31,11 +35,16 @@ export interface IEditServiceAdm {
 export const AdmProvider = ({ children }: IAdmProviders) => {
   const [idService, setIdService] = useState(0);
   const [modalServices, setModalServices] = useState(false);
-console.log(idService)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { setServices, services } = useContext(ServicesContext);
 
   const closeModalServices = () => setModalServices(false);
+  const openModalServices = () => {
+    setModalServices(true);
+  };
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const addServices = async (formData: IServiceAdm) => {
     const token = localStorage.getItem("@TOKEN");
@@ -45,14 +54,14 @@ console.log(idService)
           Authorization: `Bearer ${token}`,
         },
       });
-      setModalServices(false)
+      closeModal();
       setServices([...services, response.data]);
       toast.success("Serviço cadastrado");
     } catch (error) {
-      console.log(error);
+      toast.error('Ops! Algo deu errado')
     }
   };
-  
+
   const editServices = async (formData: IEditServiceAdm) => {
     const token = localStorage.getItem("@TOKEN");
     try {
@@ -61,9 +70,18 @@ console.log(idService)
           Authorization: `Bearer ${token}`,
         },
       });
+      const updatedServices = services.map((service) => {
+        if (service.id === idService) {
+          return { ...service, ...formData };
+        }
+        return service;
+      });
+
+      setServices(updatedServices);
+      closeModalServices();
       toast.success("Serviço editado");
     } catch (error) {
-      console.log(error);
+      toast.error('Ops! Algo deu errado')
     }
   };
 
@@ -75,15 +93,31 @@ console.log(idService)
           Authorization: `Bearer ${token}`,
         },
       });
+      const updatedServices = services.filter((service) => service.id !== idService);
+
+      setServices(updatedServices);
+      closeModalServices();
       toast.success("Serviço excluído");
     } catch (error) {
-      console.log(error);
+      toast.error('Ops! Algo deu errado')
     }
   };
 
   return (
     <AdmContext.Provider
-      value={{ addServices, editServices, deleteServices, setIdService, closeModalServices, setModalServices, modalServices }}
+      value={{
+        addServices,
+        editServices,
+        deleteServices,
+        setIdService,
+        closeModalServices,
+        setModalServices,
+        modalServices,
+        closeModal,
+        openModal,
+        openModalServices,
+        isModalOpen,
+      }}
     >
       {children}
     </AdmContext.Provider>
