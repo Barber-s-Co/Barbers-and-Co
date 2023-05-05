@@ -1,7 +1,6 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "../../Form/Input";
 import { IEditServiceAdm, IServiceAdm } from "../../../context/AdmContext";
-import { useContext } from "react";
 import { StyleModalAdd, StyledModalEdit } from "./style";
 
 interface IModalEdit {
@@ -38,7 +37,9 @@ export const ModalEditService = ({ modalServices, closeModalServices, editServic
           <Input type="text" id="edit-price" placeholder="Editar preço" {...register("price")} />
           <button className="btnEdit">Editar preço</button>
         </form>
-        <button className="btnDelete" onClick={() => deleteServices()}>excluir Serviço</button>
+        <button className="btnDelete" onClick={() => deleteServices()}>
+          excluir Serviço
+        </button>
       </div>
     </StyledModalEdit>
   );

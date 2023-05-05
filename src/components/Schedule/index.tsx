@@ -21,8 +21,7 @@ export interface ISchedulingFormData {
 }
 
 export const Schedule = () => {
-  const { services, available, postSchedule, appointments } =
-    useContext(ServicesContext);
+  const { services, available, postSchedule, appointments } = useContext(ServicesContext);
   const [selectedDay, setSelectedDay] = useState("");
   const [isDaySelected, setIsDaySelected] = useState(false);
   const id = localStorage.getItem("@USERID") || "null";
@@ -56,14 +55,8 @@ export const Schedule = () => {
                   return (
                     <li key={appointment.id}>
                       <div>
-                        <p>
-                          {appointment.name.charAt(0).toUpperCase() +
-                            appointment.name.slice(1)}
-                        </p>
-                        <span>{`${
-                          appointment.date.charAt(0).toUpperCase() +
-                          appointment.date.slice(1)
-                        } ás ${appointment.hour}`}</span>
+                        <p>{appointment.name.charAt(0).toUpperCase() + appointment.name.slice(1)}</p>
+                        <span>{`${appointment.date.charAt(0).toUpperCase() + appointment.date.slice(1)} ás ${appointment.hour}`}</span>
                       </div>
                       <img src={trash} alt="delete" />
                     </li>
@@ -113,10 +106,7 @@ export const Schedule = () => {
         </label>
         <label>
           Horário
-          <select
-            disabled={!isDaySelected}
-            {...register("hour", { required: true })}
-          >
+          <select disabled={!isDaySelected} {...register("hour", { required: true })}>
             {getAvailableHours(selectedDay).map((hour) => {
               return (
                 <option key={hour} value={hour}>

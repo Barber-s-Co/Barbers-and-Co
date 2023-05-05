@@ -10,12 +10,10 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
 }
 
-export const Input = forwardRef(
-  ({ label, error, ...rest }: IInput, ref: ForwardedRef<HTMLInputElement>) => (
-    <div>
-      {label ? <label>{label}</label> : null}
-      <StyleInput ref={ref} {...rest} />
-      {error ? <p>{error.message}</p> : null}
-    </div>
-  )
-);
+export const Input = forwardRef(({ label, error, ...rest }: IInput, ref: ForwardedRef<HTMLInputElement>) => (
+  <div>
+    {label ? <label>{label}</label> : null}
+    <StyleInput ref={ref} {...rest} />
+    {error ? <p>{error.message}</p> : null}
+  </div>
+));

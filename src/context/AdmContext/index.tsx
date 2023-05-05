@@ -58,7 +58,7 @@ export const AdmProvider = ({ children }: IAdmProviders) => {
       setServices([...services, response.data]);
       toast.success("Serviço cadastrado");
     } catch (error) {
-      toast.error('Ops! Algo deu errado')
+      toast.error("Ops! Algo deu errado");
     }
   };
 
@@ -81,7 +81,7 @@ export const AdmProvider = ({ children }: IAdmProviders) => {
       closeModalServices();
       toast.success("Serviço editado");
     } catch (error) {
-      toast.error('Ops! Algo deu errado')
+      toast.error("Ops! Algo deu errado");
     }
   };
 
@@ -99,7 +99,7 @@ export const AdmProvider = ({ children }: IAdmProviders) => {
       closeModalServices();
       toast.success("Serviço excluído");
     } catch (error) {
-      toast.error('Ops! Algo deu errado')
+      toast.error("Ops! Algo deu errado");
     }
   };
 

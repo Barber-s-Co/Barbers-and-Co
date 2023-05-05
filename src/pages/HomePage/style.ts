@@ -44,12 +44,7 @@ export const CentralLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
-    ),
-    url(${backgroundLogo});
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${backgroundLogo});
   background-color: rgba(0, 0, 0, 0.9);
   height: 25.563rem;
   background-size: cover;
@@ -94,12 +89,7 @@ export const StyleServices = styled.div`
   display: flex;
   height: 40rem;
   width: 100%;
-  background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
-    ),
-    url(${backgroundServices});
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${backgroundServices});
   background-color: rgba(0, 0, 0, 0.9);
   background-size: cover;
   background-position: center;
@@ -197,12 +187,7 @@ export const SchedulingHome = styled.div`
 export const StyleFeedback = styled.div`
   width: 100%;
   height: 24.75rem;
-  background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ),
-    url(${backgroundFeedback});
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundFeedback});
   background-color: rgba(0, 0, 0, 10);
   background-size: cover;
   background-position: center;

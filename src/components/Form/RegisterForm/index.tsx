@@ -62,9 +62,7 @@ export const RegisterForm = () => {
           error={errors.confirm}
         />
         <div className="div_btn_register">
-          <button disabled={loading}>
-            {loading ? "Cadastrando..." : "Cadastrar"}
-          </button>
+          <button disabled={loading}>{loading ? "Cadastrando..." : "Cadastrar"}</button>
         </div>
       </div>
     </form>
