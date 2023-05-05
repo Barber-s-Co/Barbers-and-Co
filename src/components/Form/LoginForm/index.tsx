@@ -52,9 +52,9 @@ export const LoginForm = () => {
         />
         <button disabled={loading}>{loading ? "Entrando..." : "Entrar"}</button>
 
-        <p className="register__paragraph">
+        <small className="register__paragraph">
           Crie sua conta e aproveite o melhor serviço da cidade!
-        </p>
+        </small>
         <Link to="/register" className="register__btn">
           Cadastrar
         </Link>
