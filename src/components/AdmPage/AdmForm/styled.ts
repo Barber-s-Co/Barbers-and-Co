@@ -110,7 +110,8 @@ export const StyledContainer = styled.div`
       padding: 10px 0;
 
       width: 100%;
-      height: 175px;
+      height: 50%;
+      max-height: 50%;
 
       button {
         display: flex;
@@ -139,8 +140,8 @@ export const StyledContainer = styled.div`
       padding: 10px 5px;
       gap: 15px;
 
-      max-height: 175px;
-      height: 175px;
+      max-height: 50%;
+      height: 50%;
       width: 100%;
 
       overflow-y: auto;
@@ -160,6 +161,8 @@ export const StyledContainer = styled.div`
         padding: 5px 10px;
 
         color: #ffffff;
+
+        cursor: pointer;
       }
 
       ::-webkit-scrollbar {
@@ -196,6 +199,8 @@ export const StyledContainer = styled.div`
     .service-content {
       width: 37%;
       height: 70%;
+
+      padding: 20px 0;
     }
   }
 `;
@@ -205,36 +210,8 @@ export const ModalBackdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
-
-  .modal {
-    position: absolute;
-    top: 200px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    height: 50%;
-    width: 90%;
-
-    background-color: #282828;
-
-    border-radius: 8px;
-    border: 1px solid #404040;
-
-    color: white;
-
-    .modal-content {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-    }
-  }
 `;
