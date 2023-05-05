@@ -51,10 +51,7 @@ export const Homepage = () => {
         <img src={Logo} alt="logo" />
       </CentralLogo>
       <AboutUs>
-        <p>
-          Nossa empresa nasceu através de uma necessidade de agilizar o processo
-          de cuidados pessoais que um homem tem.
-        </p>
+        <p>Nossa empresa nasceu através de uma necessidade de agilizar o processo de cuidados pessoais que um homem tem.</p>
         <h2>SOBRE NÓS</h2>
       </AboutUs>
       <StyleServices>

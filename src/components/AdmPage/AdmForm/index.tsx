@@ -1,20 +1,9 @@
 import { useContext } from "react";
 import { ServicesContext } from "../../../context/ServicesContext";
 import { ModalBackdrop, StyledContainer } from "./styled";
-import { Input } from "../../Form/Input";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { AdmContext, IServiceAdm } from "../../../context/AdmContext";
+import { AdmContext } from "../../../context/AdmContext";
 import { ToastContainer } from "react-toastify";
 import { ModalAddServices, ModalEditService } from "../Modal";
-
-interface IModal {
-  openModal: () => void;
-  closeModal: () => void;
-  isModalOpen: boolean;
-  openModalServices: () => void;
-  closeModalServices: () => void;
-  modalServices: boolean;
-}
 
 export const AdmForm = () => {
   const {
@@ -29,7 +18,7 @@ export const AdmForm = () => {
     modalServices,
     isModalOpen,
   } = useContext(AdmContext);
-  const { appointments, services } = useContext(ServicesContext);
+  const { appointments, services, deleteMyAppointments } = useContext(ServicesContext);
 
   return (
     <>
@@ -62,11 +51,9 @@ export const AdmForm = () => {
                   return (
                     <li key={id}>
                       <div>
-                        <p>{name.charAt(0).toUpperCase() +
-                            name.slice(1)}</p>
+                        <p>{name.charAt(0).toUpperCase() + name.slice(1)}</p>
                         <span>{`${date.charAt(0).toUpperCase() + date.slice(1)} às ${hour}`}</span>
                       </div>
-                      <button>excluir</button>
                     </li>
                   );
                 })

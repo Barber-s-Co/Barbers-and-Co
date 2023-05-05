@@ -159,31 +159,31 @@ export const StyledModalEdit = styled.div`
       }
     }
 
-    .btnDelete{
-        position: absolute;
-        bottom: 110px;
+    .btnDelete {
+      position: absolute;
+      bottom: 110px;
 
-        width: 250px;
-        height: 35px;
+      width: 250px;
+      height: 35px;
 
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #ffffff;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #ffffff;
 
-        border-radius: 5px;
+      border-radius: 5px;
 
-        margin: 0 auto;
+      margin: 0 auto;
 
-        font-size: 16px;
+      font-size: 16px;
 
-        :hover {
-          background-color: #f9cc00;
+      :hover {
+        background-color: #f9cc00;
 
-          color: black;
+        color: black;
 
-          font-weight: 700;
+        font-weight: 700;
 
-          border: 1px solid black;
-        }
+        border: 1px solid black;
+      }
     }
   }
 

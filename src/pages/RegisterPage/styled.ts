@@ -6,11 +6,7 @@ export const StyledRegisterPage = styled.div`
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.6),
-        rgba(0, 0, 0, 0.6)
-      ),
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
       url("https://img.freepik.com/fotos-gratis/homem-em-um-salao-de-barbearia-fazendo-o-corte-de-cabelo-e-barba_1303-20953.jpg?w=2000");
     background-size: cover;
     background-position: center center;

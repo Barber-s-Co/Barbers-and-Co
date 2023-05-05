@@ -7,7 +7,7 @@ import { StyledMain } from "./style";
 export const AdmPage = () => {
   return (
     <>
-      <Header src={logo} rote="/" linkName="sair" alt="logo" className="logoImg" />
+      <Header src={logo} rote="/" linkName="Sair" alt="logo" className="logoImg" />
       <StyledMain>
         <div className="container">
           <AdmComponent />

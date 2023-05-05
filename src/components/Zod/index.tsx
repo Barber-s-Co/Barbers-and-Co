@@ -3,10 +3,7 @@ import { z } from "zod";
 export const ZodRegister = z
   .object({
     name: z.string().min(3, "Nome precisa conter pelo menos 3 caracteres"),
-    email: z
-      .string()
-      .nonempty("Email é obrigatório")
-      .email("Forneça um email válido"),
+    email: z.string().nonempty("Email é obrigatório").email("Forneça um email válido"),
     password: z
       .string()
       .min(7, "Senha deve conter pelo menos 7 caracteres")

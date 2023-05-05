@@ -32,15 +32,7 @@ export const LoginForm = () => {
       <ToastContainer theme="dark" />
       <StyledLoginForm onSubmit={handleSubmit(submit)}>
         <h2>Login</h2>
-        <Input
-          disabled={loading}
-          type="email"
-          id="login"
-          label="Email"
-          placeholder="Email"
-          {...register("email")}
-          error={errors.email}
-        />
+        <Input disabled={loading} type="email" id="login" label="Email" placeholder="Email" {...register("email")} error={errors.email} />
         <Input
           disabled={loading}
           type="password"
