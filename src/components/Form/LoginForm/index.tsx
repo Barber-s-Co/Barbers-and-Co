@@ -29,7 +29,7 @@ export const LoginForm = () => {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer theme="dark" />
       <StyledLoginForm onSubmit={handleSubmit(submit)}>
         <h2>Login</h2>
         <Input
