@@ -62,8 +62,9 @@ export const AdmForm = () => {
                   return (
                     <li key={id}>
                       <div>
-                        <p>{name}</p>
-                        <span>{`${date} ás ${hour}`}</span>
+                        <p>{name.charAt(0).toUpperCase() +
+                            name.slice(1)}</p>
+                        <span>{`${date.charAt(0).toUpperCase() + date.slice(1)} às ${hour}`}</span>
                       </div>
                       <button>excluir</button>
                     </li>
