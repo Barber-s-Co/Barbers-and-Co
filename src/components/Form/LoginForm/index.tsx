@@ -29,7 +29,7 @@ export const LoginForm = () => {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer theme="dark" />
       <StyledLoginForm onSubmit={handleSubmit(submit)}>
         <h2>Login</h2>
         <Input disabled={loading} type="email" id="login" label="Email" placeholder="Email" {...register("email")} error={errors.email} />
@@ -44,7 +44,9 @@ export const LoginForm = () => {
         />
         <button disabled={loading}>{loading ? "Entrando..." : "Entrar"}</button>
 
-        <p className="register__paragraph">Crie sua conta e aproveite o melhor serviço da cidade!</p>
+        <small className="register__paragraph">
+          Crie sua conta e aproveite o melhor serviço da cidade!
+        </small>
         <Link to="/register" className="register__btn">
           Cadastrar
         </Link>
