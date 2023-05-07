@@ -87,7 +87,7 @@ export const ServicesProvider = ({ children }: IServicesProviders) => {
 
   const deleteMyAppointments = async (id: number) => {
     const token = localStorage.getItem("@TOKEN");
-    console.log(token, id)
+   
     try {
       const response = await api.delete(`/scheduling/${id}`, {
         headers: {

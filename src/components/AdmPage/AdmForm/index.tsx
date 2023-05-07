@@ -22,7 +22,7 @@ export const AdmForm = () => {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer theme="dark" />
 
       {isModalOpen && (
         <ModalBackdrop>
